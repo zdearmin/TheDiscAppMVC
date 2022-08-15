@@ -1,4 +1,5 @@
-﻿using TheDiscAppMVC.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Models.Collection;
 
 namespace TheDiscAppMVC.Services.Collection
@@ -42,9 +43,58 @@ namespace TheDiscAppMVC.Services.Collection
 
             return new CollectionDetail
             {
-                Id = collection.Id
-                
+                Id = collection.Id,
+                Name = collection.Name
+            };
+        }
+
+        public async Task<IEnumerable<CollectionListItem>> GetAllCollecitons()
+        {
+            var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
+            {
+                Id = collection.Id,
+                Name = collection.Name
+            })
+                .ToListAsync();
+            return collections;
+        }
+
+        public async Task<bool> UpdateCollection(CollectionEdit model)
+        {
+            var collection = await _dbContext.Collections.FindAsync(model.Id);
+
+            if (collection is null)
+            {
+                return false;
             }
+
+            collection.Name = model.Name;
+
+            if (await _dbContext.SaveChangesAsync() == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> DeleteCollection(int id)
+        {
+            var collection = _dbContext.Collections.Find(id);
+
+            if (collection is null)
+            {
+                return false;
+            }
+
+            _dbContext.Collections.Remove(collection);
+
+            if (await _dbContext.SaveChangesAsync() == 1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
