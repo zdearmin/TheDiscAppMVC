@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Services.Collection;
+using TheDiscAppMVC.Services.Player;
 
 var builder = WebApplication.CreateBuilder(args);
 
