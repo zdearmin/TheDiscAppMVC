@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Stability" class="control-label"></label>
-                <input asp-for="Stability" class="form-control" />
+                @Html.DropDownListFor(s => s.Stability, Model.Stability)
                 <span asp-validation-for="Stability" class="text-danger"></span>
             </div>
             <div class="form-group">
