@@ -4,7 +4,7 @@ using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Player
 {
-    public class PlayerService
+    public class PlayerService : IPlayerService
     {
         private readonly ApplicationDbContext _dbContext;
         public PlayerService(ApplicationDbContext dbContext)
@@ -52,7 +52,7 @@ namespace TheDiscAppMVC.Services.Player
             };
         }
 
-        public async Task<IEnumerable<PlayerListItem>> GetAllPlayer()
+        public async Task<IEnumerable<PlayerListItem>> GetAllPlayers()
         {
             var player = await _dbContext.Players.Select(player => new PlayerListItem
             {
