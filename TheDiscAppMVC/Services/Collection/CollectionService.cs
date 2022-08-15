@@ -4,7 +4,7 @@ using TheDiscAppMVC.Models.Collection;
 
 namespace TheDiscAppMVC.Services.Collection
 {
-    public class CollectionService
+    public class CollectionService 
     {
         private readonly ApplicationDbContext _dbContext;
         public CollectionService(ApplicationDbContext dbContext)
