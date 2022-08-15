@@ -51,6 +51,7 @@ namespace TheDiscAppMVC.Data
         public DateTime? ApprovalDate { get; set; }
 
         public virtual ICollection<Collection> Collection { get; set; }
+        public DiscType DiscType { get; internal set; }
     }
 
     //public enum Brand
