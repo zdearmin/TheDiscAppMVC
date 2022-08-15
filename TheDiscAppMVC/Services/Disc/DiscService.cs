@@ -1,4 +1,5 @@
-﻿using TheDiscAppMVC.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Models.Disc;
 
 namespace TheDiscAppMVC.Services.Disc
@@ -61,6 +62,57 @@ namespace TheDiscAppMVC.Services.Disc
                 Fade = (Models.Disc.Fade)disc.Fade,
                 Plastic = disc.Plastic
             };
+        }
+
+        public async Task<IEnumerable<DiscListItem>> GetAllDiscs()
+        {
+            var discs = await _dbContext.Discs.Select(disc => new DiscListItem
+            {
+                Id = disc.Id,
+                Name = disc.Name,
+                Brand = disc.Brand
+            })
+                .ToListAsync();
+            return discs;
+        }
+
+        public async Task<bool> UpdateDisc(DiscEdit model)
+        {
+            var disc = await _dbContext.Discs.FindAsync(model.Id);
+
+            if (disc is null)
+            {
+                return false;
+            }
+
+            disc.Name = model.Name;
+            disc.Brand = model.Brand;
+
+            if (await _dbContext.SaveChangesAsync() == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> DeleteDisc(int id)
+        {
+            var disc = _dbContext.Discs.Find(id);
+
+            if (disc is null)
+            {
+                return false;
+            }
+
+            _dbContext.Discs.Remove(disc);
+
+            if (await _dbContext.SaveChangesAsync() == 1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
