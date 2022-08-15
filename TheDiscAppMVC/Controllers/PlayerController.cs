@@ -77,7 +77,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, PlayerrEdit model)
+        public async Task<IActionResult> Edit(int id, PlayerEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
             {
