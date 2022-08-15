@@ -1,33 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TheDiscAppMVC.Models.Collection;
-using TheDiscAppMVC.Services.Collection;
+using TheDiscAppMVC.Models.Disc;
+using TheDiscAppMVC.Services.Disc;
 
 namespace TheDiscAppMVC.Controllers
 {
-    public class CollectionController : Controller
+    public class DiscController : Controller
     {
-        private readonly ICollectionService _collectionService;
-        public CollectionController(ICollectionService collectionService)
+        private readonly IDiscService _discService;
+        public DiscController(IDiscService discService)
         {
-            _collectionService = collectionService;
+            _discService = discService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var collections = await _collectionService.GetAllCollections();
-            return View(collections);
+            var discs = await _discService.GetAllDiscs();
+            return View(discs);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var collection = await _collectionService.GetCollectionById(id);
+            var disc = await _discService.GetDiscById(id);
 
-            if (collection == null)
+            if (disc == null)
             {
                 return NotFound();
             }
 
-            return View(collection);
+            return View(disc);
         }
 
         public IActionResult Create()
@@ -37,7 +37,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CollectionCreate model)
+        public async Task<IActionResult> Create(DiscCreate model)
         {
             if (!ModelState.IsValid)
             {
@@ -45,7 +45,7 @@ namespace TheDiscAppMVC.Controllers
                 return View(ModelState);
             }
 
-            bool wasCreated = await _collectionService.CreateCollection(model);
+            bool wasCreated = await _discService.CreateDisc(model);
 
             if (wasCreated)
             {
@@ -60,31 +60,31 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            CollectionDetail collection = await _collectionService.GetCollectionById(id);
+            DiscDetail disc = await _discService.GetDiscById(id);
 
-            if (collection == null)
+            if (disc == null)
             {
                 return NotFound();
             }
 
-            var collectionEdit = new CollectionEdit
+            var customerEdit = new DiscEdit
             {
-                Id = collection.Id,
-                Name = collection.Name,
+                Id = disc.Id,
+                Name = disc.Name
             };
 
-            return View(collectionEdit);
+            return View(customerEdit);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, CollectionEdit model)
+        public async Task<IActionResult> Edit(int id, DiscEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
             {
                 return View(ModelState);
             }
 
-            bool wasUpdated = await _collectionService.UpdateCollection(model);
+            bool wasUpdated = await _discService.UpdateDisc(model);
 
             if (wasUpdated)
             {
@@ -99,21 +99,21 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var collection = await _collectionService.GetCollectionById(id);
+            var disc = await _discService.GetDiscById(id);
 
-            if (collection == null)
+            if (disc == null)
             {
                 return NotFound();
             }
 
-            return View(collection);
+            return View(disc);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(CollectionDetail model)
+        public async Task<IActionResult> Delete(DiscDetail model)
         {
-            if (await _collectionService.DeleteCollection(model.Id))
+            if (await _discService.DeleteDisc(model.Id))
             {
                 return RedirectToAction(nameof(Index));
             }
