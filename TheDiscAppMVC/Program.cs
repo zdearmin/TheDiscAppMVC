@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Services.Collection;
+using TheDiscAppMVC.Services.Disc;
+using TheDiscAppMVC.Services.Player;
+using TheDiscAppMVC.Services.Team;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +14,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<ICollectionService, CollectionService>();
+builder.Services.AddScoped<IDiscService, DiscService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();

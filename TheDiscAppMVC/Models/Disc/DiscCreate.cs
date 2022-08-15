@@ -4,42 +4,42 @@ namespace TheDiscAppMVC.Models.Disc
 {
     public class DiscCreate
     {
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Brand is required")]
         public string Brand { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Stability is required")]
         public Stability Stability { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Type is required")]
         public DiscType Type { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Speed is required")]
         public Speed Speed { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Glide is required")]
         public Glide Glide { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Turn is required")]
         public Turn Turn { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fade is required")]
         public Fade Fade { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Plastic is required")]
         public string Plastic { get; set; }
-        public double OuterDiameter { get; set; }
-        public double InnerDiameter { get; set; }
-        public double RimWidth { get; set; }
-        public double Height { get; set; }
-        public double RimDepth { get; set; }
-        public double MaxWeight { get; set; }
-        public double RimConfiguration { get; set; }
-        public bool PdgaApproved { get; set; }
-        public DateTime ApprovalDate { get; set; }
+        public double? OuterDiameter { get; set; }
+        public double? InnerDiameter { get; set; }
+        public double? RimWidth { get; set; }
+        public double? Height { get; set; }
+        public double? RimDepth { get; set; }
+        public double? MaxWeight { get; set; }
+        public double? RimConfiguration { get; set; }
+        public bool? PdgaApproved { get; set; }
+        public DateTime? ApprovalDate { get; set; }
     }
 
     public enum Stability

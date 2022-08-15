@@ -4,7 +4,7 @@ using TheDiscAppMVC.Models.Collection;
 
 namespace TheDiscAppMVC.Services.Collection
 {
-    public class CollectionService
+    public class CollectionService : ICollectionService
     {
         private readonly ApplicationDbContext _dbContext;
         public CollectionService(ApplicationDbContext dbContext)
@@ -48,7 +48,7 @@ namespace TheDiscAppMVC.Services.Collection
             };
         }
 
-        public async Task<IEnumerable<CollectionListItem>> GetAllCollecitons()
+        public async Task<IEnumerable<CollectionListItem>> GetAllCollections()
         {
             var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
             {

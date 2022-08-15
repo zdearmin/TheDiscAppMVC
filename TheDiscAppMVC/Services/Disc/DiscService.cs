@@ -4,7 +4,7 @@ using TheDiscAppMVC.Models.Disc;
 
 namespace TheDiscAppMVC.Services.Disc
 {
-    public class DiscService
+    public class DiscService : IDiscService
     {
         private readonly ApplicationDbContext _dbContext;
         public DiscService(ApplicationDbContext dbContext)
