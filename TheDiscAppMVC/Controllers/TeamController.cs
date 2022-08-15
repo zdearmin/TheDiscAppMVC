@@ -1,33 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TheDiscAppMVC.Models.Player;
-using TheDiscAppMVC.Services.Player;
+using TheDiscAppMVC.Models.Team;
+using TheDiscAppMVC.Services.Team;
 
 namespace TheDiscAppMVC.Controllers
 {
-    public class PlayerController : Controller
+    public class TeamController : Controller
     {
-        private readonly IPlayerService _playerService;
-        public PlayerController(IPlayerService playerService)
+        private readonly ITeamService _teamService;
+        public TeamController(ITeamService teamService)
         {
-            _playerService = playerService;
+            _teamService = teamService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var players = await _playerService.GetAllPlayers();
-            return View(players);
+            var teams = await _teamService.GetAllTeams();
+            return View(teams);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var player = await _playerService.GetPlayerById(id);
+            var team = await _teamService.GetTeamById(id);
 
-            if (player == null)
+            if (team == null)
             {
                 return NotFound();
             }
 
-            return View(player);
+            return View(team);
         }
 
         public IActionResult Create()
@@ -37,7 +37,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PlayerCreate model)
+        public async Task<IActionResult> Create(TeamCreate model)
         {
             if (!ModelState.IsValid)
             {
@@ -45,7 +45,7 @@ namespace TheDiscAppMVC.Controllers
                 return View(ModelState);
             }
 
-            bool wasCreated = await _playerService.CreatePlayer(model);
+            bool wasCreated = await _teamService.CreateTeam(model);
 
             if (wasCreated)
             {
@@ -60,31 +60,31 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            PlayerDetail player = await _playerService.GetPlayerById(id);
+            TeamDetail team = await _teamService.GetTeamById(id);
 
-            if (player == null)
+            if (team == null)
             {
                 return NotFound();
             }
 
-            var playerEdit = new PlayerEdit
+            var teamEdit = new TeamEdit
             {
-                Id = player.Id,
-                FirstName = player.Name
+                Id = team.Id,
+                Name = team.Name,
             };
 
-            return View(playerEdit);
+            return View(teamEdit);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, PlayerrEdit model)
+        public async Task<IActionResult> Edit(int id, TeamEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
             {
                 return View(ModelState);
             }
 
-            bool wasUpdated = await _playerService.UpdatePlayer(model);
+            bool wasUpdated = await _teamService.UpdateTeam(model);
 
             if (wasUpdated)
             {
@@ -99,21 +99,21 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var player = await _playerService.GetPlayerById(id);
+            var team = await _teamService.GetTeamById(id);
 
-            if (player == null)
+            if (team == null)
             {
                 return NotFound();
             }
 
-            return View(player);
+            return View(team);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(PlayerDetail model)
+        public async Task<IActionResult> Delete(TeamDetail model)
         {
-            if (await _playerService.DeletePlayer(model.Id))
+            if (await _teamService.DeleteTeam(model.Id))
             {
                 return RedirectToAction(nameof(Index));
             }
