@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TheDiscAppMVC.Data
 {
@@ -7,20 +8,16 @@ namespace TheDiscAppMVC.Data
     {
         public Collection()
         {
-            Disc = new HashSet<Disc>();
+            Discs = new HashSet<Disc>();
+            Players = new HashSet<Player>();
         }
 
-        [Key]
         public int Id { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
-        [Required]
-        [ForeignKey("Player")]
         public int PlayerId { get; set; }
+        public int DiscId { get; set; }
 
-        public virtual ICollection<Disc> Disc { get; set; }
-        public virtual Player Player { get; set; }
+        public virtual ICollection<Disc> Discs { get; set; }
+        public virtual ICollection<Player> Players { get; set; }
     }
 }

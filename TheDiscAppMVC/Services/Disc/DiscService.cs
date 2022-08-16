@@ -23,12 +23,11 @@ namespace TheDiscAppMVC.Services.Disc
             {
                 Name = model.Name,
                 Brand = model.Brand,
-                Stability = (Data.Stability)model.Stability,
-                Type = (Data.DiscType)model.Type,
-                Speed = (Data.Speed)model.Speed,
-                Glide = (Data.Glide)model.Glide,
-                Turn = (Data.Turn)model.Turn,
-                Fade = (Data.Fade)model.Fade,
+                DiscType = model.DiscType,
+                Speed = model.Speed,
+                Glide = model.Glide,
+                Turn = model.Turn,
+                Fade = model.Fade,
                 Plastic = model.Plastic,
             });
 
@@ -54,12 +53,11 @@ namespace TheDiscAppMVC.Services.Disc
                 Id = disc.Id,
                 Name = disc.Name,
                 Brand = disc.Brand,
-                Stability = (Models.Disc.Stability)disc.Stability,
-                Type = (Models.Disc.DiscType)disc.DiscType,
-                Speed = (Models.Disc.Speed)disc.Speed,
-                Glide = (Models.Disc.Glide)disc.Glide,
-                Turn = (Models.Disc.Turn)disc.Turn,
-                Fade = (Models.Disc.Fade)disc.Fade,
+                DiscType = disc.DiscType,
+                Speed = disc.Speed,
+                Glide = disc.Glide,
+                Turn = disc.Turn,
+                Fade = disc.Fade,
                 Plastic = disc.Plastic
             };
         }

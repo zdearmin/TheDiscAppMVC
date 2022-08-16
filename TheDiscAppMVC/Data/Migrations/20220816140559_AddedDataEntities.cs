@@ -5,10 +5,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TheDiscAppMVC.Data.Migrations
 {
-    public partial class DataEntitiesAdded : Migration
+    public partial class AddedDataEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Collections",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PlayerId = table.Column<int>(type: "int", nullable: false),
+                    DiscId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Collections", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Discs",
                 columns: table => new
@@ -17,8 +32,7 @@ namespace TheDiscAppMVC.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Stability = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
+                    DiscType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Speed = table.Column<int>(type: "int", nullable: false),
                     Glide = table.Column<int>(type: "int", nullable: false),
                     Turn = table.Column<int>(type: "int", nullable: false),
@@ -45,11 +59,36 @@ namespace TheDiscAppMVC.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PlayerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Teams", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CollectionDisc",
+                columns: table => new
+                {
+                    CollectionsId = table.Column<int>(type: "int", nullable: false),
+                    DiscsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CollectionDisc", x => new { x.CollectionsId, x.DiscsId });
+                    table.ForeignKey(
+                        name: "FK_CollectionDisc_Collections_CollectionsId",
+                        column: x => x.CollectionsId,
+                        principalTable: "Collections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CollectionDisc_Discs_DiscsId",
+                        column: x => x.DiscsId,
+                        principalTable: "Discs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,12 +97,11 @@ namespace TheDiscAppMVC.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PdgaNumber = table.Column<int>(type: "int", nullable: true),
                     PdgaRating = table.Column<int>(type: "int", nullable: true),
                     MemberSince = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TeamId = table.Column<int>(type: "int", nullable: false)
+                    TeamId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,64 +110,42 @@ namespace TheDiscAppMVC.Data.Migrations
                         name: "FK_Players_Teams_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Teams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Collections",
+                name: "CollectionPlayer",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PlayerId = table.Column<int>(type: "int", nullable: false)
+                    CollectionsId = table.Column<int>(type: "int", nullable: false),
+                    PlayersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Collections", x => x.Id);
+                    table.PrimaryKey("PK_CollectionPlayer", x => new { x.CollectionsId, x.PlayersId });
                     table.ForeignKey(
-                        name: "FK_Collections_Players_PlayerId",
-                        column: x => x.PlayerId,
+                        name: "FK_CollectionPlayer_Collections_CollectionsId",
+                        column: x => x.CollectionsId,
+                        principalTable: "Collections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CollectionPlayer_Players_PlayersId",
+                        column: x => x.PlayersId,
                         principalTable: "Players",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CollectionDisc",
-                columns: table => new
-                {
-                    CollectionId = table.Column<int>(type: "int", nullable: false),
-                    DiscId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CollectionDisc", x => new { x.CollectionId, x.DiscId });
-                    table.ForeignKey(
-                        name: "FK_CollectionDisc_Collections_CollectionId",
-                        column: x => x.CollectionId,
-                        principalTable: "Collections",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CollectionDisc_Discs_DiscId",
-                        column: x => x.DiscId,
-                        principalTable: "Discs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_CollectionDisc_DiscId",
+                name: "IX_CollectionDisc_DiscsId",
                 table: "CollectionDisc",
-                column: "DiscId");
+                column: "DiscsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Collections_PlayerId",
-                table: "Collections",
-                column: "PlayerId",
-                unique: true);
+                name: "IX_CollectionPlayer_PlayersId",
+                table: "CollectionPlayer",
+                column: "PlayersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_TeamId",
@@ -143,10 +159,13 @@ namespace TheDiscAppMVC.Data.Migrations
                 name: "CollectionDisc");
 
             migrationBuilder.DropTable(
-                name: "Collections");
+                name: "CollectionPlayer");
 
             migrationBuilder.DropTable(
                 name: "Discs");
+
+            migrationBuilder.DropTable(
+                name: "Collections");
 
             migrationBuilder.DropTable(
                 name: "Players");

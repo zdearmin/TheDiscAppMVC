@@ -21,8 +21,7 @@ namespace TheDiscAppMVC.Services.Player
 
             _dbContext.Players.Add(new Data.Player
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
+                Name = model.Name
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -45,7 +44,7 @@ namespace TheDiscAppMVC.Services.Player
             return new PlayerDetail
             {
                 Id = player.Id,
-                Name = player.FirstName + " " + player.LastName,
+                Name = player.Name,
                 PdgaNumber = (int)player.PdgaNumber,
                 PdgaRating = (int)player.PdgaRating,
                 MemberSince = (DateTime)player.MemberSince,
@@ -57,7 +56,7 @@ namespace TheDiscAppMVC.Services.Player
             var player = await _dbContext.Players.Select(player => new PlayerListItem
             {
                 Id = player.Id,
-                Name = player.FirstName + " " + player.LastName,
+                Name = player.Name
             })
                 .ToListAsync();
             return player;
@@ -72,8 +71,7 @@ namespace TheDiscAppMVC.Services.Player
                 return false;
             }
 
-            player.FirstName = model.FirstName;
-            player.LastName = model.LastName;
+            player.Name = model.Name;   
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

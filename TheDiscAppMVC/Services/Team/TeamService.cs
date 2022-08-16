@@ -49,7 +49,7 @@ namespace TheDiscAppMVC.Services.Team
                 Players = team.Players.Select(p => new PlayerListItem
                 {
                     Id = p.Id,
-                    Name = p.FirstName + " " + p.LastName
+                    Name = p.Name
                 }).ToList()
             };
         }

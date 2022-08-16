@@ -5,11 +5,11 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
-        public Stability Stability { get; set; }
-        public DiscType Type { get; set; }
-        public Speed Speed { get; set; }
-        public Glide Glide { get; set; }
-        public Turn Turn { get; set; }
-        public Fade Fade { get; set; }
+        public string Stability { get; set; }
+        public string DiscType { get; set; }
+        public int Speed { get; set; }
+        public int Glide { get; set; }
+        public int Turn { get; set; }
+        public int Fade { get; set; }
     }
 }

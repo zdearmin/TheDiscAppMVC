@@ -24,17 +24,32 @@ namespace TheDiscAppMVC.Data.Migrations
 
             modelBuilder.Entity("CollectionDisc", b =>
                 {
-                    b.Property<int>("CollectionId")
+                    b.Property<int>("CollectionsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DiscId")
+                    b.Property<int>("DiscsId")
                         .HasColumnType("int");
 
-                    b.HasKey("CollectionId", "DiscId");
+                    b.HasKey("CollectionsId", "DiscsId");
 
-                    b.HasIndex("DiscId");
+                    b.HasIndex("DiscsId");
 
                     b.ToTable("CollectionDisc");
+                });
+
+            modelBuilder.Entity("CollectionPlayer", b =>
+                {
+                    b.Property<int>("CollectionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CollectionsId", "PlayersId");
+
+                    b.HasIndex("PlayersId");
+
+                    b.ToTable("CollectionPlayer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -247,6 +262,9 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("DiscId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -255,9 +273,6 @@ namespace TheDiscAppMVC.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PlayerId")
-                        .IsUnique();
 
                     b.ToTable("Collections");
                 });
@@ -274,6 +289,10 @@ namespace TheDiscAppMVC.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiscType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -318,13 +337,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     b.Property<int>("Speed")
                         .HasColumnType("int");
 
-                    b.Property<int>("Stability")
-                        .HasColumnType("int");
-
                     b.Property<int>("Turn")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -340,16 +353,12 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("MemberSince")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PdgaNumber")
                         .HasColumnType("int");
@@ -357,7 +366,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     b.Property<int?>("PdgaRating")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeamId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -379,6 +388,9 @@ namespace TheDiscAppMVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Teams");
@@ -388,13 +400,28 @@ namespace TheDiscAppMVC.Data.Migrations
                 {
                     b.HasOne("TheDiscAppMVC.Data.Collection", null)
                         .WithMany()
-                        .HasForeignKey("CollectionId")
+                        .HasForeignKey("CollectionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TheDiscAppMVC.Data.Disc", null)
                         .WithMany()
-                        .HasForeignKey("DiscId")
+                        .HasForeignKey("DiscsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CollectionPlayer", b =>
+                {
+                    b.HasOne("TheDiscAppMVC.Data.Collection", null)
+                        .WithMany()
+                        .HasForeignKey("CollectionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheDiscAppMVC.Data.Player", null)
+                        .WithMany()
+                        .HasForeignKey("PlayersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -450,32 +477,13 @@ namespace TheDiscAppMVC.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TheDiscAppMVC.Data.Collection", b =>
-                {
-                    b.HasOne("TheDiscAppMVC.Data.Player", "Player")
-                        .WithOne("Collection")
-                        .HasForeignKey("TheDiscAppMVC.Data.Collection", "PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-                });
-
             modelBuilder.Entity("TheDiscAppMVC.Data.Player", b =>
                 {
                     b.HasOne("TheDiscAppMVC.Data.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("TheDiscAppMVC.Data.Player", b =>
-                {
-                    b.Navigation("Collection")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TheDiscAppMVC.Data.Team", b =>

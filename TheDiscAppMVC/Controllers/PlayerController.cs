@@ -70,7 +70,7 @@ namespace TheDiscAppMVC.Controllers
             var playerEdit = new PlayerEdit
             {
                 Id = player.Id,
-                FirstName = player.Name
+                Name = player.Name
             };
 
             return View(playerEdit);

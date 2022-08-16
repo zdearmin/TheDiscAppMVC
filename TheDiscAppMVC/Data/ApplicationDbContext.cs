@@ -10,9 +10,9 @@ namespace TheDiscAppMVC.Data
         { 
         }
 
-        public DbSet<Disc> Discs { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Collection> Collections { get; set; }
-        public DbSet <Team> Teams { get; set; }
+        public virtual DbSet<Disc> Discs { get; set; }
+        public virtual DbSet<Player> Players { get; set; } 
+        public virtual DbSet<Collection> Collections { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
     }
 }
