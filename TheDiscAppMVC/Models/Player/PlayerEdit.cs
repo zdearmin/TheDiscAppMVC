@@ -9,7 +9,8 @@ namespace TheDiscAppMVC.Models.Player
         [Required]
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; }
-        public int PdgaNumber { get; set; }
-        public int PdgaRating { get; set; }
+        public int? PdgaNumber { get; set; }
+        public int? PdgaRating { get; set; }
+        public int? TeamId { get; set; }
     }
 }

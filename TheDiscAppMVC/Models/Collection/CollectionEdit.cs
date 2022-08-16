@@ -10,5 +10,10 @@ namespace TheDiscAppMVC.Models.Collection
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; }
 
+        [Required]
+        public int PlayerId { get; set; }
+
+        [Required]
+        public int DiscId { get; set; }
     }
 }
