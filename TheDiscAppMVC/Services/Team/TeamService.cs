@@ -74,7 +74,7 @@ namespace TheDiscAppMVC.Services.Team
                 return false;
             }
 
-            team.Name = team.Name;
+            team.Name = model.Name;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

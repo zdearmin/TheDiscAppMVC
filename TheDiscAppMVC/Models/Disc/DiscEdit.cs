@@ -14,9 +14,6 @@ namespace TheDiscAppMVC.Models.Disc
         public string Brand { get; set; }
 
         [Required]
-        public string Stability { get; set; }
-
-        [Required]
         public string DiscType { get; set; }
 
         [Required]
@@ -33,13 +30,13 @@ namespace TheDiscAppMVC.Models.Disc
 
         [Required]
         public string Plastic { get; set; }
+        public double? MaxWeight { get; set; }
         public double? OuterDiameter { get; set; }
         public double? InnerDiameter { get; set; }
         public double? RimWidth { get; set; }
-        public double? Height { get; set; }
         public double? RimDepth { get; set; }
-        public double? MaxWeight { get; set; }
         public double? RimConfiguration { get; set; }
+        public double? Height { get; set; }
         public bool? PdgaApproved { get; set; }
         public DateTime? ApprovalDate { get; set; }
     }

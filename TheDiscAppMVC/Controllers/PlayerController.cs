@@ -1,15 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using TheDiscAppMVC.Models.Player;
+using TheDiscAppMVC.Models.Team;
 using TheDiscAppMVC.Services.Player;
+using TheDiscAppMVC.Services.Team;
 
 namespace TheDiscAppMVC.Controllers
 {
     public class PlayerController : Controller
     {
         private readonly IPlayerService _playerService;
-        public PlayerController(IPlayerService playerService)
+        private readonly ITeamService _teamService;
+        public PlayerController(IPlayerService playerService, ITeamService teamService)
         {
             _playerService = playerService;
+            _teamService = teamService;
         }
 
         public async Task<IActionResult> Index()
@@ -30,9 +35,22 @@ namespace TheDiscAppMVC.Controllers
             return View(player);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var teams = await _teamService.GetAllTeams();
+
+            IEnumerable<SelectListItem> teamSelect = teams
+                .Select(t => new SelectListItem()
+            {
+                Text = t.Name,
+                Value = t.Id.ToString()
+            });
+
+            PlayerCreate model = new PlayerCreate();
+
+            model.TeamOptions = teamSelect;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -70,7 +88,9 @@ namespace TheDiscAppMVC.Controllers
             var playerEdit = new PlayerEdit
             {
                 Id = player.Id,
-                Name = player.Name
+                Name = player.Name,
+                PdgaNumber = player.PdgaNumber,
+                PdgaRating = player.PdgaRating
             };
 
             return View(playerEdit);
