@@ -68,7 +68,12 @@ namespace TheDiscAppMVC.Services.Disc
             {
                 Id = disc.Id,
                 Name = disc.Name,
-                Brand = disc.Brand
+                Brand = disc.Brand,
+                DiscType = disc.DiscType,
+                Speed = disc.Speed,
+                Glide = disc.Glide,
+                Turn = disc.Turn,
+                Fade = disc.Fade
             })
                 .ToListAsync();
             return discs;
@@ -85,6 +90,21 @@ namespace TheDiscAppMVC.Services.Disc
 
             disc.Name = model.Name;
             disc.Brand = model.Brand;
+            disc.DiscType = model.DiscType;
+            disc.Speed = model.Speed;
+            disc.Glide = model.Glide;
+            disc.Turn = model.Turn;
+            disc.Fade = model.Fade;
+            disc.Plastic = model.Plastic;
+            disc.MaxWeight = model.MaxWeight;
+            disc.OuterDiameter = model.OuterDiameter;
+            disc.InnerDiameter = model.InnerDiameter;
+            disc.RimWidth = model.RimWidth;
+            disc.RimDepth = model.RimDepth;
+            disc.RimConfiguration = model.RimConfiguration;
+            disc.Height = model.Height;
+            disc.PdgaApproved = model.PdgaApproved;
+            disc.ApprovalDate = model.ApprovalDate;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {
