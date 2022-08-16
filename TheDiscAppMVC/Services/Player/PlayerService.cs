@@ -21,7 +21,7 @@ namespace TheDiscAppMVC.Services.Player
 
             _dbContext.Players.Add(new Data.Player
             {
-                Name = model.Name
+                Name = model.Name,
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -44,10 +44,7 @@ namespace TheDiscAppMVC.Services.Player
             return new PlayerDetail
             {
                 Id = player.Id,
-                Name = player.Name,
-                PdgaNumber = (int)player.PdgaNumber,
-                PdgaRating = (int)player.PdgaRating,
-                MemberSince = (DateTime)player.MemberSince,
+                Name = player.Name
             };
         }
 

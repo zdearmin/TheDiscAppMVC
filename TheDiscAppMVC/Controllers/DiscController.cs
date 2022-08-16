@@ -45,7 +45,9 @@ namespace TheDiscAppMVC.Controllers
                 return View(ModelState);
             }
 
-            if (await _discService.CreateDisc(model))
+            bool wasCreated = await _discService.CreateDisc(model);
+
+            if (wasCreated)
             {
                 return RedirectToAction(nameof(Index));
             }

@@ -6,6 +6,7 @@ namespace TheDiscAppMVC.Models.Collection
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public PlayerListItem Player { get; set; }
+        public string PlayerName { get; set; }
+        public string DiscName { get; set; }
     }
 }
