@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
+using TheDiscAppMVC.Models.Collection;
+using TheDiscAppMVC.Models.Disc;
 using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Player
@@ -22,6 +24,8 @@ namespace TheDiscAppMVC.Services.Player
             _dbContext.Players.Add(new Data.Player
             {
                 Name = model.Name,
+                PdgaNumber = model.PdgaNumber,
+                PdgaRating = model.PdgaRating
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -34,7 +38,11 @@ namespace TheDiscAppMVC.Services.Player
 
         public async Task<PlayerDetail> GetPlayerById(int id)
         {
-            var player = await _dbContext.Players.FindAsync(id);
+            var player = await _dbContext.Players
+                .Include(c => c.Collections)
+                .ThenInclude(d => d.Discs)
+                .FirstOrDefaultAsync(p => p.Id == id);
+                
 
             if (player is null)
             {
@@ -44,7 +52,15 @@ namespace TheDiscAppMVC.Services.Player
             return new PlayerDetail
             {
                 Id = player.Id,
-                Name = player.Name
+                Name = player.Name,
+                PdgaNumber = player.PdgaNumber,
+                PdgaRating = player.PdgaRating,
+                Collections = player.Collections.Select(d => new CollectionListItem
+                {
+                    Id = d.Id,
+                    Name = d.Name
+                })
+                .ToList()
             };
         }
 
@@ -69,6 +85,8 @@ namespace TheDiscAppMVC.Services.Player
             }
 
             player.Name = model.Name;   
+            player.PdgaNumber = model.PdgaNumber;
+            player.PdgaRating = model.PdgaRating;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

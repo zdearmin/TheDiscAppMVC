@@ -13,10 +13,9 @@ namespace TheDiscAppMVC.Data
         public string Name { get; set; }
         public int? PdgaNumber { get; set; }
         public int? PdgaRating { get; set; }
-        public DateTime? MemberSince { get; set; }
         public int? TeamId { get; set; }
-        public Team Team { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
+        public virtual Team Team { get; set; } = null!;
     }
 }
