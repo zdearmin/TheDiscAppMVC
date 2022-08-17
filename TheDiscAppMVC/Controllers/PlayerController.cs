@@ -90,7 +90,8 @@ namespace TheDiscAppMVC.Controllers
                 Id = player.Id,
                 Name = player.Name,
                 PdgaNumber = player.PdgaNumber,
-                PdgaRating = player.PdgaRating
+                PdgaRating = player.PdgaRating,
+                TeamId = player.TeamId
             };
 
             return View(playerEdit);

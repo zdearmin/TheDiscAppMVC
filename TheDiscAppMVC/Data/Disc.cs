@@ -28,7 +28,6 @@ namespace TheDiscAppMVC.Data
         public double? MaxWeight { get; set; }
         public double? RimConfiguration { get; set; }
         public bool? PdgaApproved { get; set; }
-        public DateTime? ApprovalDate { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
     }

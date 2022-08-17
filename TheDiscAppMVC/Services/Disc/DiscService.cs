@@ -104,7 +104,6 @@ namespace TheDiscAppMVC.Services.Disc
             disc.RimConfiguration = model.RimConfiguration;
             disc.Height = model.Height;
             disc.PdgaApproved = model.PdgaApproved;
-            disc.ApprovalDate = model.ApprovalDate;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

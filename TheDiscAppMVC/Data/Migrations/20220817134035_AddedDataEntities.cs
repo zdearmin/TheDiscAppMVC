@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -45,8 +44,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     RimDepth = table.Column<double>(type: "float", nullable: true),
                     MaxWeight = table.Column<double>(type: "float", nullable: true),
                     RimConfiguration = table.Column<double>(type: "float", nullable: true),
-                    PdgaApproved = table.Column<bool>(type: "bit", nullable: true),
-                    ApprovalDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    PdgaApproved = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,7 +58,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PlayerId = table.Column<int>(type: "int", nullable: false)
+                    PlayerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,9 +96,8 @@ namespace TheDiscAppMVC.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PdgaNumber = table.Column<int>(type: "int", nullable: true),
-                    PdgaRating = table.Column<int>(type: "int", nullable: true),
-                    MemberSince = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    PdgaNumber = table.Column<int>(type: "int", nullable: false),
+                    PdgaRating = table.Column<int>(type: "int", nullable: false),
                     TeamId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

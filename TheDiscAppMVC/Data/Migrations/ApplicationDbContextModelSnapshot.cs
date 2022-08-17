@@ -285,9 +285,6 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("ApprovalDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -353,17 +350,14 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("MemberSince")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PdgaNumber")
+                    b.Property<int>("PdgaNumber")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PdgaRating")
+                    b.Property<int>("PdgaRating")
                         .HasColumnType("int");
 
                     b.Property<int?>("TeamId")
@@ -388,7 +382,7 @@ namespace TheDiscAppMVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlayerId")
+                    b.Property<int?>("PlayerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
