@@ -1,4 +1,5 @@
-﻿using static TheDiscAppMVC.Common.Enums.DiscEnums;
+﻿using System.ComponentModel.DataAnnotations;
+using static TheDiscAppMVC.Common.Enums.DiscEnums;
 
 namespace TheDiscAppMVC.Models.Disc
 {
@@ -8,6 +9,8 @@ namespace TheDiscAppMVC.Models.Disc
         public string Name { get; set; }
         public BrandEnum Brand { get; set; }
         public StabilityEnum Stability { get; set; }
+
+        [Display(Name = "Disc Type")]
         public DiscTypeEnum DiscType { get; set; }
         public SpeedEnum Speed { get; set; }
         public GlideEnum Glide { get; set; }

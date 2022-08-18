@@ -1,4 +1,5 @@
-﻿@model TheDiscAppMVC.Models.Disc.DiscEdit
+﻿@using static TheDiscAppMVC.Common.Enums.DiscEnums
+@model TheDiscAppMVC.Models.Disc.DiscEdit
 
 @{
     ViewData["Title"] = "Edit";
@@ -19,37 +20,65 @@
             </div>
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Stability" class="control-label"></label>
-                <input asp-for="Stability" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Stability" asp-items="Html.GetEnumSelectList<StabilityEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Stability" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DiscType" class="control-label"></label>
-                <input asp-for="DiscType" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="DiscType" asp-items="Html.GetEnumSelectList<DiscTypeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="DiscType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
-                <input asp-for="Speed" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Speed" asp-items="Html.GetEnumSelectList<SpeedEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Speed" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Glide" class="control-label"></label>
-                <input asp-for="Glide" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Glide" asp-items="Html.GetEnumSelectList<GlideEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Glide" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Turn" class="control-label"></label>
-                <input asp-for="Turn" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Turn" asp-items="Html.GetEnumSelectList<TurnEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Turn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fade" class="control-label"></label>
-                <input asp-for="Fade" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Fade" asp-items="Html.GetEnumSelectList<FadeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Fade" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -78,6 +78,15 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
+            var teams = await _teamService.GetAllTeams();
+
+            IEnumerable<SelectListItem> teamSelect = teams
+                .Select(t => new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                });
+
             PlayerDetail player = await _playerService.GetPlayerById(id);
 
             if (player == null)
@@ -93,6 +102,8 @@ namespace TheDiscAppMVC.Controllers
                 PdgaRating = player.PdgaRating,
                 TeamId = player.TeamId
             };
+
+            playerEdit.TeamOptions = teamSelect;
 
             return View(playerEdit);
         }
