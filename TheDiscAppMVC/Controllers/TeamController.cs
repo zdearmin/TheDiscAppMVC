@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using TheDiscAppMVC.Models.Team;
+using TheDiscAppMVC.Services.Player;
 using TheDiscAppMVC.Services.Team;
 
 namespace TheDiscAppMVC.Controllers
@@ -7,9 +9,11 @@ namespace TheDiscAppMVC.Controllers
     public class TeamController : Controller
     {
         private readonly ITeamService _teamService;
-        public TeamController(ITeamService teamService)
+        private readonly IPlayerService _playerService;
+        public TeamController(ITeamService teamService, IPlayerService playerService)
         {
             _teamService = teamService;
+            _playerService = playerService;
         }
 
         public async Task<IActionResult> Index()
@@ -70,7 +74,7 @@ namespace TheDiscAppMVC.Controllers
             var teamEdit = new TeamEdit
             {
                 Id = team.Id,
-                Name = team.Name,
+                Name = team.Name
             };
 
             return View(teamEdit);

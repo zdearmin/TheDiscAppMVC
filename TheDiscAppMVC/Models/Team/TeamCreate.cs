@@ -6,6 +6,7 @@ namespace TheDiscAppMVC.Models.Team
     {
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Name (Required)", Prompt = "e.g. Innova")]
         public string Name { get; set; }
     }
 }
