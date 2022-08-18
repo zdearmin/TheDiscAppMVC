@@ -5,9 +5,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create a disc</h1>
 
-<h4>Disc</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -48,7 +47,7 @@
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
                 <div class="col-md-10">
-                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                    <select asp-for="Speed" asp-items="Html.GetEnumSelectList<SpeedEnum>()">
                         <option selected="selected" value="">Please select</option>
                     </select>
                 </div>
@@ -56,17 +55,29 @@
             </div>
             <div class="form-group">
                 <label asp-for="Glide" class="control-label"></label>
-                <input asp-for="Glide" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Glide" asp-items="Html.GetEnumSelectList<GlideEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Glide" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Turn" class="control-label"></label>
-                <input asp-for="Turn" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Turn" asp-items="Html.GetEnumSelectList<TurnEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Turn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fade" class="control-label"></label>
-                <input asp-for="Fade" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Fade" asp-items="Html.GetEnumSelectList<FadeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Fade" class="text-danger"></span>
             </div>
             <div class="form-group">
