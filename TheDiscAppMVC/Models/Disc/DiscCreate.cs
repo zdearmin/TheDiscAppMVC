@@ -43,7 +43,7 @@ namespace TheDiscAppMVC.Models.Disc
         [Display(Name = "Plastic (Required)")]
         public string Plastic { get; set; }
 
-        [Display(Name = "Outer Diameter")]
+        [Display(Name = "Outer Diameter (cm)")]
         public double? OuterDiameter { get; set; }
 
         [Display(Name = "Inner Diameter (cm)")]
