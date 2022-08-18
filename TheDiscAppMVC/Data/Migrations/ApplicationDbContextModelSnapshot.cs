@@ -285,13 +285,11 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Brand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Brand")
+                        .HasColumnType("int");
 
-                    b.Property<string>("DiscType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DiscType")
+                        .HasColumnType("int");
 
                     b.Property<int>("Fade")
                         .HasColumnType("int");
@@ -332,6 +330,9 @@ namespace TheDiscAppMVC.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<int>("Speed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stability")
                         .HasColumnType("int");
 
                     b.Property<int>("Turn")

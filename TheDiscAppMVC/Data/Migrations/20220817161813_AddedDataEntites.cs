@@ -4,7 +4,7 @@
 
 namespace TheDiscAppMVC.Data.Migrations
 {
-    public partial class AddedDataEntities : Migration
+    public partial class AddedDataEntites : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,8 +30,9 @@ namespace TheDiscAppMVC.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DiscType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Brand = table.Column<int>(type: "int", nullable: false),
+                    Stability = table.Column<int>(type: "int", nullable: false),
+                    DiscType = table.Column<int>(type: "int", nullable: false),
                     Speed = table.Column<int>(type: "int", nullable: false),
                     Glide = table.Column<int>(type: "int", nullable: false),
                     Turn = table.Column<int>(type: "int", nullable: false),

@@ -1,4 +1,5 @@
-﻿@model TheDiscAppMVC.Models.Disc.DiscCreate
+﻿@using static TheDiscAppMVC.Common.Enums.DiscEnums
+@model TheDiscAppMVC.Models.Disc.DiscCreate
 
 @{
     ViewData["Title"] = "Create";
@@ -19,17 +20,38 @@
             </div>
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Stability" class="control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="Stability" asp-items="Html.GetEnumSelectList<StabilityEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Stability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DiscType" class="control-label"></label>
-                <input asp-for="DiscType" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="DiscType" asp-items="Html.GetEnumSelectList<DiscTypeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="DiscType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
-                <input asp-for="Speed" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Speed" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -91,11 +113,6 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="PdgaApproved" /> @Html.DisplayNameFor(model => model.PdgaApproved)
                 </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApprovalDate" class="control-label"></label>
-                <input asp-for="ApprovalDate" class="form-control" />
-                <span asp-validation-for="ApprovalDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -72,6 +72,7 @@ namespace TheDiscAppMVC.Controllers
                 Id = disc.Id,
                 Name = disc.Name,
                 Brand = disc.Brand,
+                Stability = disc.Stability,
                 DiscType = disc.DiscType,
                 Speed = disc.Speed,
                 Glide = disc.Glide,
@@ -86,7 +87,6 @@ namespace TheDiscAppMVC.Controllers
                 RimConfiguration = disc.RimConfiguration,
                 Height = disc.Height,
                 PdgaApproved = disc.PdgaApproved,
-                ApprovalDate = disc.ApprovalDate
             };
 
             return View(customerEdit);
