@@ -25,7 +25,8 @@ namespace TheDiscAppMVC.Services.Player
             {
                 Name = model.Name,
                 PdgaNumber = model.PdgaNumber,
-                PdgaRating = model.PdgaRating
+                PdgaRating = model.PdgaRating,
+                TeamId = model.TeamId
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -39,6 +40,7 @@ namespace TheDiscAppMVC.Services.Player
         public async Task<PlayerDetail> GetPlayerById(int id)
         {
             var player = await _dbContext.Players
+                .Include(t => t.Team)
                 .Include(c => c.Collections)
                 .ThenInclude(d => d.Discs)
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -55,6 +57,7 @@ namespace TheDiscAppMVC.Services.Player
                 Name = player.Name,
                 PdgaNumber = player.PdgaNumber,
                 PdgaRating = player.PdgaRating,
+                TeamName = player.Team.Name,
                 Collections = player.Collections.Select(d => new CollectionListItem
                 {
                     Id = d.Id,
@@ -66,10 +69,13 @@ namespace TheDiscAppMVC.Services.Player
 
         public async Task<IEnumerable<PlayerListItem>> GetAllPlayers()
         {
-            var player = await _dbContext.Players.Select(player => new PlayerListItem
+            var player = await _dbContext.Players
+                .Include(t => t.Team)
+                .Select(player => new PlayerListItem
             {
                 Id = player.Id,
-                Name = player.Name
+                Name = player.Name,
+                TeamName = player.Team.Name
             })
                 .ToListAsync();
             return player;
@@ -87,6 +93,7 @@ namespace TheDiscAppMVC.Services.Player
             player.Name = model.Name;   
             player.PdgaNumber = model.PdgaNumber;
             player.PdgaRating = model.PdgaRating;
+            player.TeamId = model.TeamId;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

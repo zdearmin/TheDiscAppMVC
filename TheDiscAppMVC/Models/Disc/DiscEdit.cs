@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static TheDiscAppMVC.Common.Enums.DiscEnums;
 
 namespace TheDiscAppMVC.Models.Disc
 {
@@ -11,22 +12,25 @@ namespace TheDiscAppMVC.Models.Disc
         public string Name { get; set; }
 
         [Required]
-        public string Brand { get; set; }
+        public BrandEnum Brand { get; set; }
 
         [Required]
-        public string DiscType { get; set; }
+        public StabilityEnum Stability { get; set; }
 
         [Required]
-        public int Speed { get; set; }
+        public DiscTypeEnum DiscType { get; set; }
 
         [Required]
-        public int Glide { get; set; }
+        public SpeedEnum Speed { get; set; }
 
         [Required]
-        public int Turn { get; set; }
+        public GlideEnum Glide { get; set; }
 
         [Required]
-        public int Fade { get; set; }
+        public TurnEnum Turn { get; set; }
+
+        [Required]
+        public FadeEnum Fade { get; set; }
 
         [Required]
         public string Plastic { get; set; }
@@ -38,6 +42,5 @@ namespace TheDiscAppMVC.Models.Disc
         public double? RimConfiguration { get; set; }
         public double? Height { get; set; }
         public bool? PdgaApproved { get; set; }
-        public DateTime? ApprovalDate { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using static TheDiscAppMVC.Common.Enums.DiscEnums;
 
 namespace TheDiscAppMVC.Data
 {
@@ -13,12 +14,13 @@ namespace TheDiscAppMVC.Data
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Brand { get; set; }
-        public string DiscType { get; set; }
-        public int Speed { get; set; }
-        public int Glide { get; set; }
-        public int Turn { get; set; }
-        public int Fade { get; set; }
+        public BrandEnum Brand { get; set; }
+        public StabilityEnum Stability { get; set; }
+        public DiscTypeEnum DiscType { get; set; }
+        public SpeedEnum Speed { get; set; }
+        public GlideEnum Glide { get; set; }
+        public TurnEnum Turn { get; set; }
+        public FadeEnum Fade { get; set; }
         public string Plastic { get; set; }
         public double? OuterDiameter { get; set; }
         public double? InnerDiameter { get; set; }
@@ -28,7 +30,6 @@ namespace TheDiscAppMVC.Data
         public double? MaxWeight { get; set; }
         public double? RimConfiguration { get; set; }
         public bool? PdgaApproved { get; set; }
-        public DateTime? ApprovalDate { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
     }

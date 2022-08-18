@@ -23,6 +23,11 @@
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Stability" class="control-label"></label>
+                <input asp-for="Stability" class="form-control" />
+                <span asp-validation-for="Stability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DiscType" class="control-label"></label>
                 <input asp-for="DiscType" class="form-control" />
                 <span asp-validation-for="DiscType" class="text-danger"></span>
@@ -91,11 +96,6 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="PdgaApproved" /> @Html.DisplayNameFor(model => model.PdgaApproved)
                 </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApprovalDate" class="control-label"></label>
-                <input asp-for="ApprovalDate" class="form-control" />
-                <span asp-validation-for="ApprovalDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

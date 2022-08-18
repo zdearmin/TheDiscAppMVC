@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using static TheDiscAppMVC.Common.Enums.DiscEnums;
 
 namespace TheDiscAppMVC.Models.Disc
 {
@@ -6,36 +8,63 @@ namespace TheDiscAppMVC.Models.Disc
     {
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Name (Required)")]
         public string Name { get; set; }
 
         [Required]
-        public string Brand { get; set; }
+        [Display(Name = "Brand (Required)")]
+        public BrandEnum Brand { get; set; }
 
         [Required]
-        public string DiscType { get; set; }
+        [Display(Name = "Stability (Required)")]
+        public StabilityEnum Stability { get; set; }
 
         [Required]
-        public int Speed { get; set; }
+        [Display(Name = "Disc Type (Required)")]
+        public DiscTypeEnum DiscType { get; set; }
 
         [Required]
-        public int Glide { get; set; }
+        [Display(Name = "Speed (Required)")]
+        public SpeedEnum Speed { get; set; }
 
         [Required]
-        public int Turn { get; set; }
+        [Display(Name = "Glide (Required)")]
+        public GlideEnum Glide { get; set; }
 
         [Required]
-        public int Fade { get; set; }
+        [Display(Name = "Turn (Required)")]
+        public TurnEnum Turn { get; set; }
 
         [Required]
+        [Display(Name = "Fade (Required)")]
+        public FadeEnum Fade { get; set; }
+
+        [Required]
+        [Display(Name = "Plastic (Required)")]
         public string Plastic { get; set; }
+
+        [Display(Name = "Outer Diameter")]
         public double? OuterDiameter { get; set; }
+
+        [Display(Name = "Inner Diameter (cm)")]
         public double? InnerDiameter { get; set; }
+
+        [Display(Name = "Rim Width (cm)")]
         public double? RimWidth { get; set; }
+
+        [Display(Name = "Height (cm)")]
         public double? Height { get; set; }
+
+        [Display(Name = "Rim Depth (%)")]
         public double? RimDepth { get; set; }
+
+        [Display(Name = "Max Weight (g)")]
         public double? MaxWeight { get; set; }
+
+        [Display(Name = "Rim Configuration")]
         public double? RimConfiguration { get; set; }
+
+        [Display(Name = "PDGA Approved")]
         public bool? PdgaApproved { get; set; }
-        public DateTime? ApprovalDate { get; set; }
     }
 }

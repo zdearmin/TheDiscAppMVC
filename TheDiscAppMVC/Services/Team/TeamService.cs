@@ -35,7 +35,9 @@ namespace TheDiscAppMVC.Services.Team
 
         public async Task<TeamDetail> GetTeamById(int id)
         {
-            var team = await _dbContext.Teams.FindAsync(id);
+            var team = await _dbContext.Teams
+                .Include(p => p.Players)
+                .FirstOrDefaultAsync(t => t.Id == id);
 
             if (team is null)
             {
@@ -46,11 +48,13 @@ namespace TheDiscAppMVC.Services.Team
             {
                 Id = team.Id,
                 Name = team.Name,
-                Players = team.Players.Select(p => new PlayerListItem
+                Players = team.Players
+                .Select(p => new PlayerListItem
                 {
                     Id = p.Id,
                     Name = p.Name
-                }).ToList()
+                })
+                .ToList()
             };
         }
 
