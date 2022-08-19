@@ -4,7 +4,7 @@
 
 namespace TheDiscAppMVC.Data.Migrations
 {
-    public partial class AddedDataEntites : Migration
+    public partial class AddedDataEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,15 +37,14 @@ namespace TheDiscAppMVC.Data.Migrations
                     Glide = table.Column<int>(type: "int", nullable: false),
                     Turn = table.Column<int>(type: "int", nullable: false),
                     Fade = table.Column<int>(type: "int", nullable: false),
-                    Plastic = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Plastic = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OuterDiameter = table.Column<double>(type: "float", nullable: true),
                     InnerDiameter = table.Column<double>(type: "float", nullable: true),
                     RimWidth = table.Column<double>(type: "float", nullable: true),
                     Height = table.Column<double>(type: "float", nullable: true),
                     RimDepth = table.Column<double>(type: "float", nullable: true),
                     MaxWeight = table.Column<double>(type: "float", nullable: true),
-                    RimConfiguration = table.Column<double>(type: "float", nullable: true),
-                    PdgaApproved = table.Column<bool>(type: "bit", nullable: true)
+                    RimConfiguration = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {

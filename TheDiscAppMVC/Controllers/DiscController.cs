@@ -86,7 +86,6 @@ namespace TheDiscAppMVC.Controllers
                 RimDepth = disc.RimDepth,
                 RimConfiguration = disc.RimConfiguration,
                 Height = disc.Height,
-                PdgaApproved = disc.PdgaApproved,
             };
 
             return View(customerEdit);

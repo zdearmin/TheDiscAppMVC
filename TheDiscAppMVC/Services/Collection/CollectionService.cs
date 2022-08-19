@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Models.Collection;
+using TheDiscAppMVC.Models.Disc;
+using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Collection
 { 
@@ -22,6 +24,8 @@ namespace TheDiscAppMVC.Services.Collection
             _dbContext.Collections.Add(new Data.Collection
             {
                 Name = model.Name,
+                PlayerId = model.PlayerId,
+                DiscId = model.DiscId
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -34,7 +38,10 @@ namespace TheDiscAppMVC.Services.Collection
 
         public async Task<CollectionDetail> GetCollectionById(int id)
         {
-            var collection = await _dbContext.Collections.FindAsync(id);
+            var collection = await _dbContext.Collections
+                .Include(p => p.Players)
+                .Include(d => d.Discs)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (collection is null)
             {
@@ -44,7 +51,17 @@ namespace TheDiscAppMVC.Services.Collection
             return new CollectionDetail
             {
                 Id = collection.Id,
-                Name = collection.Name
+                Name = collection.Name,
+                Players = collection.Players.Select(p => new PlayerListItem
+                {
+                    Name = p.Name
+                })
+                .ToList(),
+                Discs = collection.Discs.Select(d => new DiscListItem
+                {
+                    Name = d.Name
+                })
+                .ToList()
             };
         }
 
@@ -69,6 +86,8 @@ namespace TheDiscAppMVC.Services.Collection
             }
 
             collection.Name = model.Name;
+            collection.PlayerId = model.PlayerId;
+            collection.DiscId = model.DiscId;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

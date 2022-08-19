@@ -37,7 +37,6 @@ namespace TheDiscAppMVC.Services.Disc
                 RimDepth = model.RimDepth,
                 RimConfiguration = model.RimConfiguration,
                 Height = model.Height,
-                PdgaApproved = model.PdgaApproved,
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -76,7 +75,6 @@ namespace TheDiscAppMVC.Services.Disc
                 RimDepth = disc.RimDepth,
                 RimConfiguration = disc.RimConfiguration,
                 Height = disc.Height,
-                PdgaApproved = disc.PdgaApproved
             };
         }
 
@@ -123,7 +121,6 @@ namespace TheDiscAppMVC.Services.Disc
             disc.RimDepth = model.RimDepth;
             disc.RimConfiguration = model.RimConfiguration;
             disc.Height = model.Height;
-            disc.PdgaApproved = model.PdgaApproved;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {

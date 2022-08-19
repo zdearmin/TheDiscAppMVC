@@ -19,12 +19,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="PlayerId" class="control-label"></label>
-                <input asp-for="PlayerId" class="form-control" />
+                @Html.DropDownListFor(c => c.DiscId, Model.PlayerOptions)
                 <span asp-validation-for="PlayerId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DiscId" class="control-label"></label>
-                <input asp-for="DiscId" class="form-control" />
+                @Html.DropDownListFor(c => c.DiscId, Model.DiscOptions)
                 <span asp-validation-for="DiscId" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -19,6 +19,7 @@ namespace TheDiscAppMVC.Models.Player
 
         [Display(Name = "Team")]
         public int TeamId { get; set; }
+
         public IEnumerable<SelectListItem> TeamOptions { get; set; } = new List<SelectListItem>();
     }
 }
