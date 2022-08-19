@@ -54,11 +54,13 @@ namespace TheDiscAppMVC.Services.Collection
                 Name = collection.Name,
                 Players = collection.Players.Select(p => new PlayerListItem
                 {
+                    Id = p.Id,
                     Name = p.Name
                 })
                 .ToList(),
                 Discs = collection.Discs.Select(d => new DiscListItem
                 {
+                    Id = d.Id,
                     Name = d.Name
                 })
                 .ToList()
