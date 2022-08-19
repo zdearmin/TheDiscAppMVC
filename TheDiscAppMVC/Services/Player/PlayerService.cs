@@ -58,13 +58,7 @@ namespace TheDiscAppMVC.Services.Player
                 Name = player.Name,
                 PdgaNumber = player.PdgaNumber,
                 PdgaRating = player.PdgaRating,
-                TeamName = player.Team.Name,
-                Collections = player.Collections.Select(d => new CollectionListItem
-                {
-                    Id = d.Id,
-                    Name = d.Name
-                })
-                .ToList()
+                TeamName = player.Team.Name
             };
         }
 

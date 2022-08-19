@@ -12,8 +12,8 @@ using TheDiscAppMVC.Data;
 namespace TheDiscAppMVC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220817161813_AddedDataEntites")]
-    partial class AddedDataEntites
+    [Migration("20220819040104_AddedDataEntities")]
+    partial class AddedDataEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -315,11 +315,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     b.Property<double?>("OuterDiameter")
                         .HasColumnType("float");
 
-                    b.Property<bool?>("PdgaApproved")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Plastic")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("RimConfiguration")

@@ -7,6 +7,8 @@ namespace TheDiscAppMVC.Controllers
     public class CollectionController : Controller
     {
         private readonly ICollectionService _collectionService;
+        private readonly IPlayerService _playerService;
+        private readonly ITeamService _teamService;
         public CollectionController(ICollectionService collectionService)
         {
             _collectionService = collectionService;

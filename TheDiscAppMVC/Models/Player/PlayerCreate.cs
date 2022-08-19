@@ -6,6 +6,7 @@ namespace TheDiscAppMVC.Models.Player
     public class PlayerCreate
     {
         public int Id { get; set; }
+
         [StringLength(50, MinimumLength = 2)]
         [Display(Name = "Name (Required)", Prompt = "e.g. Paul McBeth")]
         public string Name { get; set; }
@@ -20,11 +21,5 @@ namespace TheDiscAppMVC.Models.Player
         public int TeamId { get; set; }
 
         public IEnumerable<SelectListItem> TeamOptions { get; set; } = new List<SelectListItem>();
-        
-        public PlayerCreate()
-        {
-            PdgaNumber = 27523;
-            PdgaRating = 1055;
-        }
     }
 }

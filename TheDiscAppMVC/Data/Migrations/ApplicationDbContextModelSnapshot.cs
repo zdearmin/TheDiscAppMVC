@@ -313,11 +313,7 @@ namespace TheDiscAppMVC.Data.Migrations
                     b.Property<double?>("OuterDiameter")
                         .HasColumnType("float");
 
-                    b.Property<bool?>("PdgaApproved")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Plastic")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("RimConfiguration")

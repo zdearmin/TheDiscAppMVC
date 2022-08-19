@@ -6,16 +6,13 @@ namespace TheDiscAppMVC.Models.Disc
 {
     public class DiscCreate
     {
-        [Required]
         [StringLength(50, MinimumLength = 2)]
         [Display(Name = "Name (Required)", Prompt = "e.g. Destroyer")]
         public string Name { get; set; }
 
-        [Required]
         [Display(Name = "Brand (Required)")]
         public BrandEnum Brand { get; set; }
 
-        [Required]
         [Display(Name = "Stability (Required)")]
         public StabilityEnum Stability { get; set; }
 
@@ -23,25 +20,20 @@ namespace TheDiscAppMVC.Models.Disc
         [Display(Name = "Disc Type (Required)")]
         public DiscTypeEnum DiscType { get; set; }
 
-        [Required]
         [Display(Name = "Speed (Required)")]
         public SpeedEnum Speed { get; set; }
 
-        [Required]
         [Display(Name = "Glide (Required)")]
         public GlideEnum Glide { get; set; }
 
-        [Required]
         [Display(Name = "Turn (Required)")]
         public TurnEnum Turn { get; set; }
 
-        [Required]
         [Display(Name = "Fade (Required)")]
         public FadeEnum Fade { get; set; }
 
-        [Required]
-        [Display(Name = "Plastic (Required)", Prompt = "e.g. Star")]
-        public string Plastic { get; set; }
+        [Display(Name = "Plastic", Prompt = "e.g. Star")]
+        public string? Plastic { get; set; }
 
         [Display(Name = "Outer Diameter (cm)", Prompt = "e.g. 21.1")]
         public double? OuterDiameter { get; set; }
@@ -63,8 +55,5 @@ namespace TheDiscAppMVC.Models.Disc
 
         [Display(Name = "Rim Configuration", Prompt = "e.g. 30.5")]
         public double? RimConfiguration { get; set; }
-
-        [Display(Name = "PDGA Approved")]
-        public bool? PdgaApproved { get; set; }
     }
 }

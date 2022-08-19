@@ -16,7 +16,7 @@ namespace TheDiscAppMVC.Models.Disc
         public GlideEnum Glide { get; set; }
         public TurnEnum Turn { get; set; }
         public FadeEnum Fade { get; set; }
-        public string Plastic { get; set; }
+        public string? Plastic { get; set; }
 
         [Display(Name = "Outer Diameter (cm)")]
         public double? OuterDiameter { get; set; }
@@ -38,8 +38,5 @@ namespace TheDiscAppMVC.Models.Disc
 
         [Display(Name = "Rim Configuration")]
         public double? RimConfiguration { get; set; }
-
-        [Display(Name = "PDGA Approved")]
-        public bool? PdgaApproved { get; set; }
     }
 }

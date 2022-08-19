@@ -159,13 +159,13 @@ namespace TheDiscAppMVC.Common.Enums
 
         public enum TurnEnum
         {
-            [Display(Name = "+1")] OneGlide,
-            [Display(Name = "0")] ZeroGlide,
-            [Display(Name = "-1")] NegOneGlide,
-            [Display(Name = "-2")] NegTwoGlide,
-            [Display(Name = "-3")] NegThreeGlide,
-            [Display(Name = "-4")] NegFourGlide,
-            [Display(Name = "-5")] NegFiveGlide,
+            [Display(Name = "+1")] OneTurn,
+            [Display(Name = "0")] ZeroTurn,
+            [Display(Name = "-1")] NegOneTurn,
+            [Display(Name = "-2")] NegTwoTurn,
+            [Display(Name = "-3")] NegThreeTurn,
+            [Display(Name = "-4")] NegFourTurn,
+            [Display(Name = "-5")] NegFiveTurn,
         }
 
         public enum FadeEnum

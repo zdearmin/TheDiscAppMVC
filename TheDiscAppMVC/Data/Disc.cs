@@ -11,7 +11,6 @@ namespace TheDiscAppMVC.Data
         {
             Collections = new HashSet<Collection>();
         }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public BrandEnum Brand { get; set; }
@@ -21,7 +20,7 @@ namespace TheDiscAppMVC.Data
         public GlideEnum Glide { get; set; }
         public TurnEnum Turn { get; set; }
         public FadeEnum Fade { get; set; }
-        public string Plastic { get; set; }
+        public string? Plastic { get; set; }
         public double? OuterDiameter { get; set; }
         public double? InnerDiameter { get; set; }
         public double? RimWidth { get; set; }
@@ -29,7 +28,6 @@ namespace TheDiscAppMVC.Data
         public double? RimDepth { get; set; }
         public double? MaxWeight { get; set; }
         public double? RimConfiguration { get; set; }
-        public bool? PdgaApproved { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }
     }
