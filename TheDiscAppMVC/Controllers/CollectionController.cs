@@ -89,6 +89,23 @@ namespace TheDiscAppMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
+            var players = await _playerService.GetAllPlayers();
+            var discs = await _discService.GetAllDiscs();
+
+            IEnumerable<SelectListItem> playerSelect = players
+                .Select(p => new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.Id.ToString()
+                });
+
+            IEnumerable<SelectListItem> discSelect = discs
+                .Select(d => new SelectListItem()
+                {
+                    Text = d.Name,
+                    Value = d.Id.ToString()
+                });
+
             CollectionDetail collection = await _collectionService.GetCollectionById(id);
 
             if (collection == null)
@@ -100,7 +117,12 @@ namespace TheDiscAppMVC.Controllers
             {
                 Id = collection.Id,
                 Name = collection.Name,
+                PlayerId = collection.PlayerId,
+                DiscId = collection.DiscId
             };
+
+            collectionEdit.PlayerOptions = playerSelect;
+            collectionEdit.DiscOptions = discSelect;
 
             return View(collectionEdit);
         }

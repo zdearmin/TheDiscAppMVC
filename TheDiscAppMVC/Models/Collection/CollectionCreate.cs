@@ -5,14 +5,13 @@ namespace TheDiscAppMVC.Models.Collection
 {
     public class CollectionCreate
     {
-        [Required]
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; }
 
-        [Required]
+        [Display(Name = "Player")]
         public int PlayerId { get; set; }
 
-        [Required]
+        [Display(Name = "Disc")]
         public int DiscId { get; set; }
 
         public IEnumerable<SelectListItem> PlayerOptions { get; set; } = new List<SelectListItem>();
