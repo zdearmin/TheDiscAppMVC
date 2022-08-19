@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheDiscAppMVC.Models.Collection;
 using TheDiscAppMVC.Services.Collection;
+using TheDiscAppMVC.Services.Player;
+using TheDiscAppMVC.Services.Disc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TheDiscAppMVC.Controllers
 {
@@ -8,10 +11,12 @@ namespace TheDiscAppMVC.Controllers
     {
         private readonly ICollectionService _collectionService;
         private readonly IPlayerService _playerService;
-        private readonly ITeamService _teamService;
-        public CollectionController(ICollectionService collectionService)
+        private readonly IDiscService _discService;
+        public CollectionController(ICollectionService collectionService, IPlayerService playerService, IDiscService discService)
         {
             _collectionService = collectionService;
+            _playerService = playerService;
+            _discService = discService;
         }
 
         public async Task<IActionResult> Index()
@@ -32,9 +37,31 @@ namespace TheDiscAppMVC.Controllers
             return View(collection);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var players = await _playerService.GetAllPlayers();
+            var discs = await _discService.GetAllDiscs();
+
+            IEnumerable<SelectListItem> playerSelect = players
+                .Select(t => new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                });
+
+            IEnumerable<SelectListItem> discSelect = discs
+                .Select(t => new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.Id.ToString()
+                });
+
+            CollectionCreate model = new CollectionCreate();
+
+            model.PlayerOptions = playerSelect;
+            model.DiscOptions = discSelect;
+
+            return View(model);
         }
 
         [HttpPost]
