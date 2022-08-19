@@ -52,6 +52,8 @@ namespace TheDiscAppMVC.Services.Collection
             {
                 Id = collection.Id,
                 Name = collection.Name,
+                NumOfPlayers = collection.Players.Count(),
+                NumOfDiscs = collection.Discs.Count(),
                 Players = collection.Players.Select(p => new PlayerListItem
                 {
                     Id = p.Id,
