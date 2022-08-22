@@ -39,8 +39,8 @@ namespace TheDiscAppMVC.Services.Collection
         public async Task<CollectionDetail> GetCollectionById(int id)
         {
             var collection = await _dbContext.Collections
-                .Include(p => p.Players)
-                .Include(d => d.Discs)
+                .Include(p => p.PlayerId)
+                .Include(d => d.DiscId)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (collection is null)
@@ -54,13 +54,15 @@ namespace TheDiscAppMVC.Services.Collection
                 Name = collection.Name,
                 NumOfPlayers = collection.Players.Count(),
                 NumOfDiscs = collection.Discs.Count(),
-                Players = collection.Players.Select(p => new PlayerListItem
+                Players = collection.Players
+                .Select(p => new PlayerListItem
                 {
                     Id = p.Id,
                     Name = p.Name
                 })
                 .ToList(),
-                Discs = collection.Discs.Select(d => new DiscListItem
+                Discs = collection.Discs
+                .Select(d => new DiscListItem
                 {
                     Id = d.Id,
                     Name = d.Name
@@ -74,9 +76,12 @@ namespace TheDiscAppMVC.Services.Collection
             var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
             {
                 Id = collection.Id,
-                Name = collection.Name
+                Name = collection.Name,
+                NumOfPlayers = collection.Players.Count(),
+                NumOfDiscs = collection.Discs.Count()
             })
                 .ToListAsync();
+
             return collections;
         }
 
