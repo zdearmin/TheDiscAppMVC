@@ -39,8 +39,8 @@ namespace TheDiscAppMVC.Services.Collection
         public async Task<CollectionDetail> GetCollectionById(int id)
         {
             var collection = await _dbContext.Collections
-                .Include(p => p.PlayerId)
-                .Include(d => d.DiscId)
+                .Include(p => p.Players)
+                .Include(d => d.Discs)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (collection is null)
