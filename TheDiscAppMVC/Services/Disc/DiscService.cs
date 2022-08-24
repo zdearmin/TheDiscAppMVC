@@ -80,19 +80,20 @@ namespace TheDiscAppMVC.Services.Disc
 
         public async Task<IEnumerable<DiscListItem>> GetAllDiscs()
         {
-            var discs = await _dbContext.Discs.Select(disc => new DiscListItem
-            {
-                Id = disc.Id,
-                Name = disc.Name,
-                Brand = disc.Brand,
-                Stability = disc.Stability,
-                DiscType = disc.DiscType,
-                Speed = disc.Speed,
-                Glide = disc.Glide,
-                Turn = disc.Turn,
-                Fade = disc.Fade,
-            })
-                .ToListAsync();
+            var discs = await _dbContext.Discs
+                .Select(disc => new DiscListItem
+                {
+                    Id = disc.Id,
+                    Name = disc.Name,
+                    Brand = disc.Brand,
+                    Stability = disc.Stability,
+                    DiscType = disc.DiscType,
+                    Speed = disc.Speed,
+                    Glide = disc.Glide,
+                    Turn = disc.Turn,
+                    Fade = disc.Fade,
+                })
+                    .ToListAsync();
             return discs;
         }
 

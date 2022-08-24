@@ -14,6 +14,7 @@ namespace TheDiscAppMVC.Models.Collection
         [Display(Name = "Disc")]
         public int DiscId { get; set; }
 
+
         public IEnumerable<SelectListItem> PlayerOptions { get; set; } = new List<SelectListItem>();
         public IEnumerable<SelectListItem> DiscOptions { get; set; } = new List<SelectListItem>();
     }

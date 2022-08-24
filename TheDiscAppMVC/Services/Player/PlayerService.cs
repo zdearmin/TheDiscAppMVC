@@ -42,10 +42,7 @@ namespace TheDiscAppMVC.Services.Player
         {
             var player = await _dbContext.Players
                 .Include(t => t.Team)
-                .Include(c => c.Collections)
-                .ThenInclude(d => d.Discs)
                 .FirstOrDefaultAsync(p => p.Id == id);
-                
 
             if (player is null)
             {
@@ -65,14 +62,14 @@ namespace TheDiscAppMVC.Services.Player
         public async Task<IEnumerable<PlayerListItem>> GetAllPlayers()
         {
             var player = await _dbContext.Players
-                .Include(t => t.Team)
                 .Select(player => new PlayerListItem
-            {
-                Id = player.Id,
-                Name = player.Name,
-                TeamName = player.Team.Name
-            })
+                {
+                    Id = player.Id,
+                    Name = player.Name,
+                    TeamName = player.Team.Name
+                })
                 .ToListAsync();
+
             return player;
         }
 
