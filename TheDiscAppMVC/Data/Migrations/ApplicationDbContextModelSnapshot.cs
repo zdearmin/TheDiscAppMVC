@@ -22,36 +22,6 @@ namespace TheDiscAppMVC.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CollectionDisc", b =>
-                {
-                    b.Property<int>("CollectionsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DiscsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CollectionsId", "DiscsId");
-
-                    b.HasIndex("DiscsId");
-
-                    b.ToTable("CollectionDisc");
-                });
-
-            modelBuilder.Entity("CollectionPlayer", b =>
-                {
-                    b.Property<int>("CollectionsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlayersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CollectionsId", "PlayersId");
-
-                    b.HasIndex("PlayersId");
-
-                    b.ToTable("CollectionPlayer");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -288,6 +258,9 @@ namespace TheDiscAppMVC.Data.Migrations
                     b.Property<int>("Brand")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CollectionId")
+                        .HasColumnType("int");
+
                     b.Property<int>("DiscType")
                         .HasColumnType("int");
 
@@ -336,6 +309,8 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CollectionId");
+
                     b.ToTable("Discs");
                 });
 
@@ -347,20 +322,25 @@ namespace TheDiscAppMVC.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("CollectionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PdgaNumber")
+                    b.Property<int?>("PdgaNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("PdgaRating")
+                    b.Property<int?>("PdgaRating")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TeamId")
+                    b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollectionId");
 
                     b.HasIndex("TeamId");
 
@@ -379,42 +359,9 @@ namespace TheDiscAppMVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PlayerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Teams");
-                });
-
-            modelBuilder.Entity("CollectionDisc", b =>
-                {
-                    b.HasOne("TheDiscAppMVC.Data.Collection", null)
-                        .WithMany()
-                        .HasForeignKey("CollectionsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TheDiscAppMVC.Data.Disc", null)
-                        .WithMany()
-                        .HasForeignKey("DiscsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CollectionPlayer", b =>
-                {
-                    b.HasOne("TheDiscAppMVC.Data.Collection", null)
-                        .WithMany()
-                        .HasForeignKey("CollectionsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TheDiscAppMVC.Data.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -468,13 +415,33 @@ namespace TheDiscAppMVC.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TheDiscAppMVC.Data.Disc", b =>
+                {
+                    b.HasOne("TheDiscAppMVC.Data.Collection", null)
+                        .WithMany("Discs")
+                        .HasForeignKey("CollectionId");
+                });
+
             modelBuilder.Entity("TheDiscAppMVC.Data.Player", b =>
                 {
+                    b.HasOne("TheDiscAppMVC.Data.Collection", null)
+                        .WithMany("Players")
+                        .HasForeignKey("CollectionId");
+
                     b.HasOne("TheDiscAppMVC.Data.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TeamId");
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("TheDiscAppMVC.Data.Collection", b =>
+                {
+                    b.Navigation("Discs");
+
+                    b.Navigation("Players");
                 });
 
             modelBuilder.Entity("TheDiscAppMVC.Data.Team", b =>

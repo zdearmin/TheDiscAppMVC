@@ -10,9 +10,11 @@ namespace TheDiscAppMVC.Models.Team
 
         [Display(Name = "Number of Players")]
         public int NumOfPlayers { get; set; }
-        public int PlayerId { get; set; }
+        public List<int> PlayerId { get; set; }
+
         [Display(Name = "Player")]
-        public string PlayerName { get; set; }
+        public List<string> PlayerName { get; set; }
+
         public List<PlayerListItem> Players { get; set; }
     }
 }

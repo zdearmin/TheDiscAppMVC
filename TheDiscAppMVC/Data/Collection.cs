@@ -8,16 +8,15 @@ namespace TheDiscAppMVC.Data
     {
         public Collection()
         {
-            Discs = new HashSet<Disc>();
             Players = new HashSet<Player>();
+            Discs = new HashSet<Disc>();
         }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public int PlayerId { get; set; }
         public int DiscId { get; set; }
 
-        public virtual ICollection<Disc> Discs { get; set; }
         public virtual ICollection<Player> Players { get; set; }
+        public virtual ICollection<Disc> Discs { get; set; }
     }
 }

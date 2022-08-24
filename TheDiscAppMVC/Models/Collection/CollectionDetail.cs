@@ -9,14 +9,16 @@ namespace TheDiscAppMVC.Models.Collection
         public int Id { get; set; }
         public string Name { get; set; }
 
-        [Display(Name = "Number of Players")]
-        public int NumOfPlayers { get; set; }
+        [Display(Name = "Player Id")]
         public int PlayerId { get; set; }
-        public List<PlayerListItem> Players { get; set; }
 
-        [Display(Name = "Number of Discs")]
-        public int NumOfDiscs { get; set; }
+        [Display(Name = "Player Name")]
+        public string PlayerName { get; set; }
+
+        [Display(Name = "Disc Id")]
         public int DiscId { get; set; }
-        public List<DiscListItem> Discs { get; set; }
+
+        [Display(Name = "Disc Name")]
+        public string DiscName { get; set; }
     }
 }
