@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
+using TheDiscAppMVC.Models.Collection;
+using TheDiscAppMVC.Models.Disc;
 using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Player
@@ -17,13 +19,16 @@ namespace TheDiscAppMVC.Services.Player
             if (model == null)
             {
                 return false;
-            }
+            }      
 
             _dbContext.Players.Add(new Data.Player
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
+                Name = model.Name,
+                PdgaNumber = model.PdgaNumber,
+                PdgaRating = model.PdgaRating,
+                TeamId = model.TeamId
             });
+
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {
@@ -35,7 +40,9 @@ namespace TheDiscAppMVC.Services.Player
 
         public async Task<PlayerDetail> GetPlayerById(int id)
         {
-            var player = await _dbContext.Players.FindAsync(id);
+            var player = await _dbContext.Players
+                .Include(t => t.Team)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (player is null)
             {
@@ -45,21 +52,24 @@ namespace TheDiscAppMVC.Services.Player
             return new PlayerDetail
             {
                 Id = player.Id,
-                Name = player.FirstName + " " + player.LastName,
-                PdgaNumber = (int)player.PdgaNumber,
-                PdgaRating = (int)player.PdgaRating,
-                MemberSince = (DateTime)player.MemberSince,
+                Name = player.Name,
+                PdgaNumber = player.PdgaNumber,
+                PdgaRating = player.PdgaRating,
+                TeamName = player.Team.Name
             };
         }
 
         public async Task<IEnumerable<PlayerListItem>> GetAllPlayers()
         {
-            var player = await _dbContext.Players.Select(player => new PlayerListItem
-            {
-                Id = player.Id,
-                Name = player.FirstName + " " + player.LastName,
-            })
+            var player = await _dbContext.Players
+                .Select(player => new PlayerListItem
+                {
+                    Id = player.Id,
+                    Name = player.Name,
+                    TeamName = player.Team.Name
+                })
                 .ToListAsync();
+
             return player;
         }
 
@@ -72,8 +82,10 @@ namespace TheDiscAppMVC.Services.Player
                 return false;
             }
 
-            player.FirstName = model.FirstName;
-            player.LastName = model.LastName;
+            player.Name = model.Name;   
+            player.PdgaNumber = model.PdgaNumber;
+            player.PdgaRating = model.PdgaRating;
+            player.TeamId = model.TeamId;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {
@@ -101,5 +113,10 @@ namespace TheDiscAppMVC.Services.Player
 
             return false;
         }
+
+        //private bool isDuplicateNumber(int number)
+        //{
+        //    return _dbContext.Players.Any(n => n.PdgaNumber == number);
+        //}
     }
 }

@@ -1,112 +1,59 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using static TheDiscAppMVC.Common.Enums.DiscEnums;
 
 namespace TheDiscAppMVC.Models.Disc
 {
     public class DiscCreate
     {
-        [Required(ErrorMessage = "Name is required")]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Name (Required)", Prompt = "e.g. Destroyer")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Brand is required")]
-        public string Brand { get; set; }
+        [Display(Name = "Brand (Required)")]
+        public BrandEnum Brand { get; set; }
 
-        [Required(ErrorMessage = "Stability is required")]
-        public Stability Stability { get; set; }
+        [Display(Name = "Stability (Required)")]
+        public StabilityEnum Stability { get; set; }
 
-        [Required(ErrorMessage = "Type is required")]
-        public DiscType Type { get; set; }
+        [Required]
+        [Display(Name = "Disc Type (Required)")]
+        public DiscTypeEnum DiscType { get; set; }
 
-        [Required(ErrorMessage = "Speed is required")]
-        public Speed Speed { get; set; }
+        [Display(Name = "Speed (Required)")]
+        public SpeedEnum Speed { get; set; }
 
-        [Required(ErrorMessage = "Glide is required")]
-        public Glide Glide { get; set; }
+        [Display(Name = "Glide (Required)")]
+        public GlideEnum Glide { get; set; }
 
-        [Required(ErrorMessage = "Turn is required")]
-        public Turn Turn { get; set; }
+        [Display(Name = "Turn (Required)")]
+        public TurnEnum Turn { get; set; }
 
-        [Required(ErrorMessage = "Fade is required")]
-        public Fade Fade { get; set; }
+        [Display(Name = "Fade (Required)")]
+        public FadeEnum Fade { get; set; }
 
-        [Required(ErrorMessage = "Plastic is required")]
-        public string Plastic { get; set; }
+        [Display(Name = "Plastic", Prompt = "e.g. Star")]
+        public string? Plastic { get; set; }
+
+        [Display(Name = "Outer Diameter (cm)", Prompt = "e.g. 21.1")]
         public double? OuterDiameter { get; set; }
+
+        [Display(Name = "Inner Diameter (cm)", Prompt = "e.g. 16.7")]
         public double? InnerDiameter { get; set; }
+
+        [Display(Name = "Rim Width (cm)", Prompt = "e.g. 2.2")]
         public double? RimWidth { get; set; }
+
+        [Display(Name = "Height (cm)", Prompt = "e.g. 1.4")]
         public double? Height { get; set; }
+
+        [Display(Name = "Rim Depth (%)", Prompt = "e.g. 5.69")]
         public double? RimDepth { get; set; }
+
+        [Display(Name = "Max Weight (g)", Prompt = "e.g. 176")]
         public double? MaxWeight { get; set; }
+
+        [Display(Name = "Rim Configuration", Prompt = "e.g. 30.5")]
         public double? RimConfiguration { get; set; }
-        public bool? PdgaApproved { get; set; }
-        public DateTime? ApprovalDate { get; set; }
-    }
-
-    public enum Stability
-    {
-        [Display(Name = "Very Overstable")] VOverstable,
-        Overtstable,
-        Stable,
-        Understable,
-        [Display(Name = "Very Understable")] VUnderstable
-    }
-
-    public enum DiscType
-    {
-        [Display(Name = "Distance Driver")] DDriver,
-        [Display(Name = "Fairway Driver")] FDriver,
-        Midrange,
-        Putter
-    }
-
-    public enum Speed
-    {
-        [Display(Name = "1")] OneSpeed,
-        [Display(Name = "2")] TwoSpeed,
-        [Display(Name = "3")] ThreeSpeed,
-        [Display(Name = "4")] FourSpeed,
-        [Display(Name = "5")] FiveSpeed,
-        [Display(Name = "6")] SixSpeed,
-        [Display(Name = "7")] SevenSpeed,
-        [Display(Name = "8")] EightSpeed,
-        [Display(Name = "9")] NineSpeed,
-        [Display(Name = "10")] TenSpeed,
-        [Display(Name = "11")] ElevenSpeed,
-        [Display(Name = "12")] TwelveSpeed,
-        [Display(Name = "13")] ThirteenSpeed,
-        [Display(Name = "14")] FourteenSpeed,
-        [Display(Name = "15")] FifteenSpeed
-    }
-
-    public enum Glide
-    {
-        [Display(Name = "1")] OneGlide,
-        [Display(Name = "2")] TwoGlide,
-        [Display(Name = "3")] ThreeGlide,
-        [Display(Name = "4")] FourGlide,
-        [Display(Name = "5")] FiveGlide,
-        [Display(Name = "6")] SixGlide,
-        [Display(Name = "7")] SevenGlide,
-    }
-
-    public enum Turn
-    {
-        [Display(Name = "+1")] OneGlide,
-        [Display(Name = "0")] ZeroGlide,
-        [Display(Name = "-1")] NegOneGlide,
-        [Display(Name = "-2")] NegTwoGlide,
-        [Display(Name = "-3")] NegThreeGlide,
-        [Display(Name = "-4")] NegFourGlide,
-        [Display(Name = "-5")] NegFiveGlide,
-    }
-
-    public enum Fade
-    {
-        [Display(Name = "0")] ZeroFade,
-        [Display(Name = "1")] OneFade,
-        [Display(Name = "2")] TwoFade,
-        [Display(Name = "3")] ThreeFade,
-        [Display(Name = "4")] FourFade,
-        [Display(Name = "5")] FiveFade,
     }
 }

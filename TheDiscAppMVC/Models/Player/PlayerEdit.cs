@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace TheDiscAppMVC.Models.Player
 {
@@ -6,14 +7,19 @@ namespace TheDiscAppMVC.Models.Player
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(50, MinimumLength = 2)]
-        public string FirstName { get; set; }
+        [Display(Name = "Name (Required)")]
+        public string Name { get; set; }
 
-        [Required]
-        [StringLength(50, MinimumLength = 2)]
-        public string LastName { get; set; }
-        public int PdgaNumber { get; set; }
-        public int PdgaRating { get; set; }
+        [Display(Name = "PDGA Number (Required)")]
+        public int? PdgaNumber { get; set; }
+
+        [Display(Name = "PDGA Rating (Required)")]
+        public int? PdgaRating { get; set; }
+
+        [Display(Name = "Team (Required)")]
+        public int TeamId { get; set; }
+
+        public IEnumerable<SelectListItem> TeamOptions { get; set; } = new List<SelectListItem>();
     }
 }

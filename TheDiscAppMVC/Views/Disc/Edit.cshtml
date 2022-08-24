@@ -1,4 +1,5 @@
-﻿@model TheDiscAppMVC.Models.Disc.DiscEdit
+﻿@using static TheDiscAppMVC.Common.Enums.DiscEnums
+@model TheDiscAppMVC.Models.Disc.DiscEdit
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,17 +7,12 @@
 
 <h1>Edit</h1>
 
-<h4>DiscEdit</h4>
+<h4>Disc : @Model.Name</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -24,37 +20,65 @@
             </div>
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Stability" class="control-label"></label>
-                <input asp-for="Stability" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Stability" asp-items="Html.GetEnumSelectList<StabilityEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Stability" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
+                <label asp-for="DiscType" class="control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="DiscType" asp-items="Html.GetEnumSelectList<DiscTypeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
+                <span asp-validation-for="DiscType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
-                <input asp-for="Speed" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Speed" asp-items="Html.GetEnumSelectList<SpeedEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Speed" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Glide" class="control-label"></label>
-                <input asp-for="Glide" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Glide" asp-items="Html.GetEnumSelectList<GlideEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Glide" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Turn" class="control-label"></label>
-                <input asp-for="Turn" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Turn" asp-items="Html.GetEnumSelectList<TurnEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Turn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fade" class="control-label"></label>
-                <input asp-for="Fade" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Fade" asp-items="Html.GetEnumSelectList<FadeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Fade" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -96,16 +120,6 @@
                 <label asp-for="RimConfiguration" class="control-label"></label>
                 <input asp-for="RimConfiguration" class="form-control" />
                 <span asp-validation-for="RimConfiguration" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="PdgaApproved" /> @Html.DisplayNameFor(model => model.PdgaApproved)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApprovalDate" class="control-label"></label>
-                <input asp-for="ApprovalDate" class="form-control" />
-                <span asp-validation-for="ApprovalDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

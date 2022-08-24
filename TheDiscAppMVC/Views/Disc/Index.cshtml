@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Disc Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add a new disc</a>
 </p>
 <table class="table">
     <thead>
@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Stability)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.DiscType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Speed)
@@ -58,7 +58,7 @@
                 @Html.DisplayFor(modelItem => item.Stability)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.DiscType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Speed)

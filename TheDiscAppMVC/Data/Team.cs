@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheDiscAppMVC.Data
 {
@@ -8,11 +9,7 @@ namespace TheDiscAppMVC.Data
         {
             Players = new HashSet<Player>();
         }
-
-        [Key]
         public int Id { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }

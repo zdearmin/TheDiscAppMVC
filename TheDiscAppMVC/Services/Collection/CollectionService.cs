@@ -1,14 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheDiscAppMVC.Data;
 using TheDiscAppMVC.Models.Collection;
+using TheDiscAppMVC.Models.Disc;
+using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Collection
 {
-<<<<<<< HEAD
     public class CollectionService : ICollectionService
-=======
-    public class CollectionService 
->>>>>>> c68989fa362feba84a0b4b26b85ea22640ad0f73
     {
         private readonly ApplicationDbContext _dbContext;
         public CollectionService(ApplicationDbContext dbContext)
@@ -26,6 +24,8 @@ namespace TheDiscAppMVC.Services.Collection
             _dbContext.Collections.Add(new Data.Collection
             {
                 Name = model.Name,
+                PlayerId = model.PlayerId,
+                DiscId = model.DiscId
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -38,7 +38,17 @@ namespace TheDiscAppMVC.Services.Collection
 
         public async Task<CollectionDetail> GetCollectionById(int id)
         {
-            var collection = await _dbContext.Collections.FindAsync(id);
+
+            var collection = await _dbContext.Collections
+                .Include(p => p.Players)
+                .Include(d => d.Discs)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            var playerId = collection.PlayerId;
+            var player = await _dbContext.Players.FirstOrDefaultAsync(p => p.Id == playerId);
+
+            var discId = collection.DiscId;
+            var disc = await _dbContext.Discs.FirstOrDefaultAsync(d => d.Id == discId);
 
             if (collection is null)
             {
@@ -48,18 +58,24 @@ namespace TheDiscAppMVC.Services.Collection
             return new CollectionDetail
             {
                 Id = collection.Id,
-                Name = collection.Name
+                Name = collection.Name,
+                PlayerId = collection.PlayerId,
+                PlayerName = player.Name,
+                DiscId = collection.DiscId,
+                DiscName = disc.Name
             };
         }
 
         public async Task<IEnumerable<CollectionListItem>> GetAllCollections()
         {
-            var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
-            {
-                Id = collection.Id,
-                Name = collection.Name
-            })
-                .ToListAsync();
+            var collections = await _dbContext.Collections
+                .Select(collection => new CollectionListItem
+                {
+                    Id = collection.Id,
+                    Name = collection.Name
+                })
+                    .ToListAsync();
+
             return collections;
         }
 
@@ -73,6 +89,8 @@ namespace TheDiscAppMVC.Services.Collection
             }
 
             collection.Name = model.Name;
+            collection.PlayerId = model.PlayerId;
+            collection.DiscId = model.DiscId;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {
@@ -100,5 +118,24 @@ namespace TheDiscAppMVC.Services.Collection
 
             return false;
         }
+
+        //private async Task<PlayerCollectionListItem> GetPlayerNames(int id)
+        //{
+        //    var playerList = await _dbContext.Players.ToListAsync();
+
+        //    var result = new List<PlayerCollectionListItem>();
+
+        //    foreach (var player in playerList)
+        //    {
+        //        result.Add(
+        //            new PlayerCollectionListItem
+        //            {
+        //                Id = id,
+        //                Name = player.Name
+        //            }
+        //            );
+        //    }
+        //    return result;
+        //}
     }
 }

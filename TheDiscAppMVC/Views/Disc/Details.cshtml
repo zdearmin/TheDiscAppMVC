@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>DiscDetail</h4>
+    <h4>Disc : @Model.Name</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -35,10 +35,10 @@
             @Html.DisplayFor(model => model.Stability)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.DiscType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.DiscType)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Speed)
@@ -111,18 +111,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RimConfiguration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PdgaApproved)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PdgaApproved)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApprovalDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApprovalDate)
         </dd>
     </dl>
 </div>
