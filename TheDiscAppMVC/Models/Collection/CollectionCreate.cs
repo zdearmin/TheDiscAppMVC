@@ -6,12 +6,13 @@ namespace TheDiscAppMVC.Models.Collection
     public class CollectionCreate
     {
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Name (Required)")]
         public string Name { get; set; }
 
-        [Display(Name = "Player")]
+        [Display(Name = "Player (Required)")]
         public int PlayerId { get; set; }
 
-        [Display(Name = "Disc")]
+        [Display(Name = "Disc (Required)")]
         public int DiscId { get; set; }
 
 
