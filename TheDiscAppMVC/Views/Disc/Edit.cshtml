@@ -87,6 +87,11 @@
                 <span asp-validation-for="Plastic" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MaxWeight" class="control-label"></label>
+                <input asp-for="MaxWeight" class="form-control" />
+                <span asp-validation-for="MaxWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="OuterDiameter" class="control-label"></label>
                 <input asp-for="OuterDiameter" class="form-control" />
                 <span asp-validation-for="OuterDiameter" class="text-danger"></span>
@@ -102,24 +107,19 @@
                 <span asp-validation-for="RimWidth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Height" class="control-label"></label>
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="RimDepth" class="control-label"></label>
                 <input asp-for="RimDepth" class="form-control" />
                 <span asp-validation-for="RimDepth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaxWeight" class="control-label"></label>
-                <input asp-for="MaxWeight" class="form-control" />
-                <span asp-validation-for="MaxWeight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="RimConfiguration" class="control-label"></label>
                 <input asp-for="RimConfiguration" class="form-control" />
                 <span asp-validation-for="RimConfiguration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
