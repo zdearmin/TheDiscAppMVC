@@ -52,13 +52,17 @@ namespace TheDiscAppMVC.Services.Collection
             {
                 Id = collection.Id,
                 Name = collection.Name,
-                Players = collection.Players.Select(p => new PlayerListItem
+                NumOfPlayers = collection.Players.Count(),
+                NumOfDiscs = collection.Discs.Count(),
+                Players = collection.Players
+                .Select(p => new PlayerListItem
                 {
                     Id = p.Id,
                     Name = p.Name
                 })
                 .ToList(),
-                Discs = collection.Discs.Select(d => new DiscListItem
+                Discs = collection.Discs
+                .Select(d => new DiscListItem
                 {
                     Id = d.Id,
                     Name = d.Name
@@ -72,9 +76,12 @@ namespace TheDiscAppMVC.Services.Collection
             var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
             {
                 Id = collection.Id,
-                Name = collection.Name
+                Name = collection.Name,
+                NumOfPlayers = collection.Players.Count(),
+                NumOfDiscs = collection.Discs.Count()
             })
                 .ToListAsync();
+
             return collections;
         }
 

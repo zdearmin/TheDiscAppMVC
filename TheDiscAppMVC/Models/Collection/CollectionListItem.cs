@@ -1,4 +1,5 @@
-﻿using TheDiscAppMVC.Models.Player;
+﻿using System.ComponentModel.DataAnnotations;
+using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Models.Collection
 {
@@ -6,7 +7,11 @@ namespace TheDiscAppMVC.Models.Collection
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string PlayerName { get; set; }
-        public string DiscName { get; set; }
+
+        [Display(Name = "Number of Players")]
+        public int NumOfPlayers { get; set; }
+
+        [Display(Name = "Number of Discs")]
+        public int NumOfDiscs { get; set; }
     }
 }
