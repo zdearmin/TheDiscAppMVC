@@ -51,9 +51,11 @@ namespace TheDiscAppMVC.Services.Team
                 NumOfPlayers = team.Players
                 .Where(p => p.TeamId == id).Count(),
                 Players = team.Players
+                .Where(p => p.TeamId == id)
                 .Select(p => new PlayerListItem
                 {
-                    Id = p.Id
+                    Id = p.Id,
+                    Name = p.Name
                 })
                 .ToList()
             };
@@ -66,7 +68,8 @@ namespace TheDiscAppMVC.Services.Team
                 Id = team.Id,
                 Name = team.Name,
                 NumOfPlayers = team.Players.Count()
-            }).ToListAsync();
+            })
+                .ToListAsync();
 
             return teams;
         }

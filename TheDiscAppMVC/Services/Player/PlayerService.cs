@@ -16,7 +16,7 @@ namespace TheDiscAppMVC.Services.Player
 
         public async Task<bool> CreatePlayer(PlayerCreate model)
         {
-            if (model == null || isDuplicateNumber(model.PdgaNumber) == true)
+            if (model == null)
             {
                 return false;
             }      
@@ -80,7 +80,7 @@ namespace TheDiscAppMVC.Services.Player
         {
             var player = await _dbContext.Players.FindAsync(model.Id);
 
-            if (player is null || isDuplicateNumber(model.PdgaNumber) == true)
+            if (player is null)
             {
                 return false;
             }
@@ -117,9 +117,9 @@ namespace TheDiscAppMVC.Services.Player
             return false;
         }
 
-        private bool isDuplicateNumber(int number)
-        {
-            return _dbContext.Players.Any(n => n.PdgaNumber == number);
-        }
+        //private bool isDuplicateNumber(int number)
+        //{
+        //    return _dbContext.Players.Any(n => n.PdgaNumber == number);
+        //}
     }
 }
