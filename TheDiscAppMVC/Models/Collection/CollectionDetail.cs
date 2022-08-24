@@ -9,14 +9,18 @@ namespace TheDiscAppMVC.Models.Collection
         public int Id { get; set; }
         public string Name { get; set; }
 
+
         [Display(Name = "Player Id")]
         public int PlayerId { get; set; }
+
 
         [Display(Name = "Player Name")]
         public string PlayerName { get; set; }
 
+
         [Display(Name = "Disc Id")]
         public int DiscId { get; set; }
+
 
         [Display(Name = "Disc Name")]
         public string DiscName { get; set; }
