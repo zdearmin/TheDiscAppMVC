@@ -118,24 +118,5 @@ namespace TheDiscAppMVC.Services.Collection
 
             return false;
         }
-
-        //private async Task<PlayerCollectionListItem> GetPlayerNames(int id)
-        //{
-        //    var playerList = await _dbContext.Players.ToListAsync();
-
-        //    var result = new List<PlayerCollectionListItem>();
-
-        //    foreach (var player in playerList)
-        //    {
-        //        result.Add(
-        //            new PlayerCollectionListItem
-        //            {
-        //                Id = id,
-        //                Name = player.Name
-        //            }
-        //            );
-        //    }
-        //    return result;
-        //}
     }
 }

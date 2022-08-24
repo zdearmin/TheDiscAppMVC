@@ -18,6 +18,9 @@ namespace TheDiscAppMVC.Models.Disc
         public FadeEnum Fade { get; set; }
         public string? Plastic { get; set; }
 
+        [Display(Name = "Max Weight (g)")]
+        public double? MaxWeight { get; set; }
+
         [Display(Name = "Outer Diameter (cm)")]
         public double? OuterDiameter { get; set; }
 
@@ -27,16 +30,13 @@ namespace TheDiscAppMVC.Models.Disc
         [Display(Name = "Rim Width (cm)")]
         public double? RimWidth { get; set; }
 
-        [Display(Name = "Height (cm)")]
-        public double? Height { get; set; }
-
         [Display(Name = "Rim Depth (%)")]
         public double? RimDepth { get; set; }
 
-        [Display(Name = "Max Weight (g)")]
-        public double? MaxWeight { get; set; }
-
         [Display(Name = "Rim Configuration")]
         public double? RimConfiguration { get; set; }
+
+        [Display(Name = "Height (cm)")]
+        public double? Height { get; set; }
     }
 }

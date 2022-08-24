@@ -19,7 +19,7 @@ namespace TheDiscAppMVC.Services.Player
             if (model == null)
             {
                 return false;
-            }      
+            }
 
             _dbContext.Players.Add(new Data.Player
             {
@@ -82,7 +82,7 @@ namespace TheDiscAppMVC.Services.Player
                 return false;
             }
 
-            player.Name = model.Name;   
+            player.Name = model.Name;
             player.PdgaNumber = model.PdgaNumber;
             player.PdgaRating = model.PdgaRating;
             player.TeamId = model.TeamId;
@@ -113,10 +113,5 @@ namespace TheDiscAppMVC.Services.Player
 
             return false;
         }
-
-        //private bool isDuplicateNumber(int number)
-        //{
-        //    return _dbContext.Players.Any(n => n.PdgaNumber == number);
-        //}
     }
 }
