@@ -1,12 +1,12 @@
-﻿@model TheDiscAppMVC.Models.Disc.DiscCreate
+﻿@using static TheDiscAppMVC.Common.Enums.DiscEnums
+@model TheDiscAppMVC.Models.Disc.DiscCreate
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create a disc</h1>
 
-<h4>Disc</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,38 +19,76 @@
             </div>
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<BrandEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Stability" class="control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="Stability" asp-items="Html.GetEnumSelectList<StabilityEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Stability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DiscType" class="control-label"></label>
-                <input asp-for="DiscType" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="DiscType" asp-items="Html.GetEnumSelectList<DiscTypeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="DiscType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
-                <input asp-for="Speed" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Speed" asp-items="Html.GetEnumSelectList<SpeedEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Speed" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Glide" class="control-label"></label>
-                <input asp-for="Glide" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Glide" asp-items="Html.GetEnumSelectList<GlideEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Glide" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Turn" class="control-label"></label>
-                <input asp-for="Turn" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Turn" asp-items="Html.GetEnumSelectList<TurnEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Turn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fade" class="control-label"></label>
-                <input asp-for="Fade" class="form-control" />
+                <div class="col-md-10">
+                    <select asp-for="Fade" asp-items="Html.GetEnumSelectList<FadeEnum>()">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
                 <span asp-validation-for="Fade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Plastic" class="control-label"></label>
                 <input asp-for="Plastic" class="form-control" />
                 <span asp-validation-for="Plastic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxWeight" class="control-label"></label>
+                <input asp-for="MaxWeight" class="form-control" />
+                <span asp-validation-for="MaxWeight" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OuterDiameter" class="control-label"></label>
@@ -68,34 +106,19 @@
                 <span asp-validation-for="RimWidth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Height" class="control-label"></label>
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="RimDepth" class="control-label"></label>
                 <input asp-for="RimDepth" class="form-control" />
                 <span asp-validation-for="RimDepth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaxWeight" class="control-label"></label>
-                <input asp-for="MaxWeight" class="form-control" />
-                <span asp-validation-for="MaxWeight" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RimConfiguration" class="control-label"></label>
                 <input asp-for="RimConfiguration" class="form-control" />
                 <span asp-validation-for="RimConfiguration" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="PdgaApproved" /> @Html.DisplayNameFor(model => model.PdgaApproved)
-                </label>
-            </div>
             <div class="form-group">
-                <label asp-for="ApprovalDate" class="control-label"></label>
-                <input asp-for="ApprovalDate" class="form-control" />
-                <span asp-validation-for="ApprovalDate" class="text-danger"></span>
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

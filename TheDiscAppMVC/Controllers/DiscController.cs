@@ -70,7 +70,22 @@ namespace TheDiscAppMVC.Controllers
             var customerEdit = new DiscEdit
             {
                 Id = disc.Id,
-                Name = disc.Name
+                Name = disc.Name,
+                Brand = disc.Brand,
+                Stability = disc.Stability,
+                DiscType = disc.DiscType,
+                Speed = disc.Speed,
+                Glide = disc.Glide,
+                Turn = disc.Turn,
+                Fade = disc.Fade,
+                Plastic = disc.Plastic,
+                MaxWeight = disc.MaxWeight,
+                OuterDiameter = disc.OuterDiameter,
+                InnerDiameter = disc.InnerDiameter,
+                RimWidth = disc.RimWidth,
+                RimDepth = disc.RimDepth,
+                RimConfiguration = disc.RimConfiguration,
+                Height = disc.Height,
             };
 
             return View(customerEdit);

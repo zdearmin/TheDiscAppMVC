@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Disc</h4>
+    <h4>Disc : @Model.Name</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -27,6 +27,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stability)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stability)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DiscType)
@@ -65,6 +71,12 @@
             @Html.DisplayFor(model => model.Plastic)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaxWeight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaxWeight)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OuterDiameter)
         </dt>
         <dd class = "col-sm-10">
@@ -83,22 +95,10 @@
             @Html.DisplayFor(model => model.RimWidth)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Height)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Height)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.RimDepth)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RimDepth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxWeight)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxWeight)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.RimConfiguration)
@@ -107,16 +107,10 @@
             @Html.DisplayFor(model => model.RimConfiguration)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PdgaApproved)
+            @Html.DisplayNameFor(model => model.Height)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PdgaApproved)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApprovalDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApprovalDate)
+            @Html.DisplayFor(model => model.Height)
         </dd>
     </dl>
 </div>

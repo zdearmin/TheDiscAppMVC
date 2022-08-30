@@ -23,12 +23,20 @@ namespace TheDiscAppMVC.Services.Disc
             {
                 Name = model.Name,
                 Brand = model.Brand,
+                Stability = model.Stability,
                 DiscType = model.DiscType,
                 Speed = model.Speed,
                 Glide = model.Glide,
                 Turn = model.Turn,
                 Fade = model.Fade,
                 Plastic = model.Plastic,
+                MaxWeight = model.MaxWeight,
+                OuterDiameter = model.OuterDiameter,
+                InnerDiameter = model.InnerDiameter,
+                RimWidth = model.RimWidth,
+                RimDepth = model.RimDepth,
+                RimConfiguration = model.RimConfiguration,
+                Height = model.Height,
             });
 
             if (await _dbContext.SaveChangesAsync() == 1)
@@ -53,24 +61,39 @@ namespace TheDiscAppMVC.Services.Disc
                 Id = disc.Id,
                 Name = disc.Name,
                 Brand = disc.Brand,
+                Stability = disc.Stability,
                 DiscType = disc.DiscType,
                 Speed = disc.Speed,
                 Glide = disc.Glide,
                 Turn = disc.Turn,
                 Fade = disc.Fade,
-                Plastic = disc.Plastic
+                Plastic = disc.Plastic,
+                MaxWeight = disc.MaxWeight,
+                OuterDiameter = disc.OuterDiameter,
+                InnerDiameter = disc.InnerDiameter,
+                RimWidth = disc.RimWidth,
+                RimDepth = disc.RimDepth,
+                RimConfiguration = disc.RimConfiguration,
+                Height = disc.Height,
             };
         }
 
         public async Task<IEnumerable<DiscListItem>> GetAllDiscs()
         {
-            var discs = await _dbContext.Discs.Select(disc => new DiscListItem
-            {
-                Id = disc.Id,
-                Name = disc.Name,
-                Brand = disc.Brand
-            })
-                .ToListAsync();
+            var discs = await _dbContext.Discs
+                .Select(disc => new DiscListItem
+                {
+                    Id = disc.Id,
+                    Name = disc.Name,
+                    Brand = disc.Brand,
+                    Stability = disc.Stability,
+                    DiscType = disc.DiscType,
+                    Speed = disc.Speed,
+                    Glide = disc.Glide,
+                    Turn = disc.Turn,
+                    Fade = disc.Fade,
+                })
+                    .ToListAsync();
             return discs;
         }
 
@@ -85,6 +108,20 @@ namespace TheDiscAppMVC.Services.Disc
 
             disc.Name = model.Name;
             disc.Brand = model.Brand;
+            disc.Stability = model.Stability;
+            disc.DiscType = model.DiscType;
+            disc.Speed = model.Speed;
+            disc.Glide = model.Glide;
+            disc.Turn = model.Turn;
+            disc.Fade = model.Fade;
+            disc.Plastic = model.Plastic;
+            disc.MaxWeight = model.MaxWeight;
+            disc.OuterDiameter = model.OuterDiameter;
+            disc.InnerDiameter = model.InnerDiameter;
+            disc.RimWidth = model.RimWidth;
+            disc.RimDepth = model.RimDepth;
+            disc.RimConfiguration = model.RimConfiguration;
+            disc.Height = model.Height;
 
             if (await _dbContext.SaveChangesAsync() == 1)
             {
