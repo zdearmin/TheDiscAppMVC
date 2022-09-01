@@ -9,15 +9,6 @@
     <li><a href="#setup">About</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#database-schema">Database Schema</a></li>
-    <li>
-        <a href="#schemas">Schemas</a>
-        <ul>
-            <li><a href="#collections">Collections</a></li>
-            <li><a href="#discs">Discs</a></li>
-            <li><a href="#players">Players</a></li>
-            <li><a href="#teams">Teams</a></li>
-        </ul>
-    </li>
     <li><a href="#resources">Resources</a></li>
   </ol>
 </details>
