@@ -1,6 +1,5 @@
 html {
     font-size: 14px;
-    font-family: 'Roboto Flex', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -16,4 +15,31 @@ html {
 
 body {
     margin-bottom: 60px;
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.faq-indent {
+    text-indent: 2em;
+}
+
+.card {
+    width: 16rem;
+    height: 20rem;
+    display: inline-flex;
+    margin-bottom: 0.25rem;
+}
+
+.action-links {
+    text-decoration: none;
 }

@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TheDiscAppMVC.styles.css" asp-append-version="true" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TheDiscAppMVC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -23,25 +21,27 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Disc" asp-action="Index">Discs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Disc" asp-action="Index">Discs</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Collection" asp-action="Index">Collections</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Collection" asp-action="Index">Collections</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-decoration-none text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="About">About</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -56,8 +56,8 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - TheDiscAppMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container text-center">
+            &copy; 2022 - TheDiscAppMVC - <a class="action-links" asp-area="" asp-controller="Home" asp-action="About">About</a> - <a class="action-links" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> - <a class="action-links" asp-area="" asp-controller="Home" asp-action="FAQs">FAQs</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

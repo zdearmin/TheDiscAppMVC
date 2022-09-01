@@ -5,9 +5,10 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create a disc</h1>
+<h2>Add a disc</h2>
 
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -17,6 +18,9 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
                 <div class="col-md-10">
@@ -26,6 +30,9 @@
                 </div>
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Stability" class="control-label"></label>
                 <div class="col-md-10">
@@ -35,6 +42,9 @@
                 </div>
                 <span asp-validation-for="Stability" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="DiscType" class="control-label"></label>
                 <div class="col-md-10">
@@ -44,6 +54,9 @@
                 </div>
                 <span asp-validation-for="DiscType" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Speed" class="control-label"></label>
                 <div class="col-md-10">
@@ -53,6 +66,9 @@
                 </div>
                 <span asp-validation-for="Speed" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Glide" class="control-label"></label>
                 <div class="col-md-10">
@@ -62,6 +78,9 @@
                 </div>
                 <span asp-validation-for="Glide" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Turn" class="control-label"></label>
                 <div class="col-md-10">
@@ -71,6 +90,9 @@
                 </div>
                 <span asp-validation-for="Turn" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Fade" class="control-label"></label>
                 <div class="col-md-10">
@@ -80,55 +102,82 @@
                 </div>
                 <span asp-validation-for="Fade" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Plastic" class="control-label"></label>
                 <input asp-for="Plastic" class="form-control" />
                 <span asp-validation-for="Plastic" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="MaxWeight" class="control-label"></label>
                 <input asp-for="MaxWeight" class="form-control" />
                 <span asp-validation-for="MaxWeight" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="OuterDiameter" class="control-label"></label>
                 <input asp-for="OuterDiameter" class="form-control" />
                 <span asp-validation-for="OuterDiameter" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="InnerDiameter" class="control-label"></label>
                 <input asp-for="InnerDiameter" class="form-control" />
                 <span asp-validation-for="InnerDiameter" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="RimWidth" class="control-label"></label>
                 <input asp-for="RimWidth" class="form-control" />
                 <span asp-validation-for="RimWidth" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="RimDepth" class="control-label"></label>
                 <input asp-for="RimDepth" class="form-control" />
                 <span asp-validation-for="RimDepth" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="RimConfiguration" class="control-label"></label>
                 <input asp-for="RimConfiguration" class="form-control" />
                 <span asp-validation-for="RimConfiguration" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="Height" class="control-label"></label>
                 <input asp-for="Height" class="form-control" />
                 <span asp-validation-for="Height" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add!" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="action-links" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
