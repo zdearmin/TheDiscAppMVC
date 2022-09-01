@@ -35,7 +35,8 @@ Developed by [Zach Dearmin](https://github.com/zdearmin)
 ## Usage
 TheDiscAppMVC had been developed with ASP.Net Identity. All indexes can be viewed without registering an account. To edit, get details, or delete information, an account will be required.
 
-This web application has been deployed to Azure Cloud Service. The base website url should resemble [thediscapp.azurewebsite.net](https://thediscapp.azurewebsites.net).
+This web application has been deployed to Azure Cloud Service. The deployed webiste can be found here: [thediscapp.azurewebsite.net](https://thediscappmvc.azurewebsites.net).
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- DATABASE SCHEMA -->
