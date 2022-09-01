@@ -4,6 +4,7 @@ using TheDiscAppMVC.Services.Collection;
 using TheDiscAppMVC.Services.Player;
 using TheDiscAppMVC.Services.Disc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TheDiscAppMVC.Controllers
 {
@@ -66,6 +67,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create(CollectionCreate model)
         {
             if (!ModelState.IsValid)
@@ -87,6 +89,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var players = await _playerService.GetAllPlayers();
@@ -128,6 +131,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, CollectionEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
@@ -148,6 +152,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var collection = await _collectionService.GetCollectionById(id);
@@ -162,6 +167,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Delete(CollectionDetail model)
         {
             if (await _collectionService.DeleteCollection(model.Id))

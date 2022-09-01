@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TheDiscAppMVC.Models.Disc;
 using TheDiscAppMVC.Services.Disc;
 
@@ -37,6 +38,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create(DiscCreate model)
         {
             if (!ModelState.IsValid)
@@ -58,6 +60,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             DiscDetail disc = await _discService.GetDiscById(id);
@@ -92,6 +95,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, DiscEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
@@ -112,6 +116,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var disc = await _discService.GetDiscById(id);
@@ -126,6 +131,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Delete(DiscDetail model)
         {
             if (await _discService.DeleteDisc(model.Id))
