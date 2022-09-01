@@ -25,7 +25,7 @@ TheDiscAppMVC is an ASP.NET web application that can be used to create your own 
  
 The application comes preset with five stock discs, players, teams, and collections. These can be expanded upon, edited, or deleted.
 
-This application is still a working progress and will continually be having new features added to it. Patience would be appreciated as we continue this project.
+This application is still a working progress and will continually be having new features added to it.
 
 Developed by [Zach Dearmin](https://github.com/zdearmin)
 
