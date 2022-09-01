@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TheDiscAppMVC.Models.Player;
 using TheDiscAppMVC.Models.Team;
@@ -55,6 +56,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create(PlayerCreate model)
         {
             if (!ModelState.IsValid)
@@ -76,6 +78,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var teams = await _teamService.GetAllTeams();
@@ -109,6 +112,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, PlayerEdit model)
         {
             if (id != model.Id || !ModelState.IsValid)
@@ -129,6 +133,7 @@ namespace TheDiscAppMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var player = await _playerService.GetPlayerById(id);
@@ -143,6 +148,7 @@ namespace TheDiscAppMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Delete(PlayerDetail model)
         {
             if (await _playerService.DeletePlayer(model.Id))

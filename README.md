@@ -6,8 +6,7 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#creators">Creators</a></li>
-    <li><a href="#setup">Setup</a></li>
+    <li><a href="#setup">About</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#database-schema">Database Schema</a></li>
     <li>
@@ -24,30 +23,33 @@
 </details>
 <br/>
 
-<!-- SETUP -->
-## Setup
-To start, you will need to clone the repository into your desired directory. Everything you need to access and run this MVC is included in this repository. You do not need any external dependencies.
+<!-- ABOUT -->
+## About
+TheDiscAppMVC is an ASP.NET web application that can be used to create your own database of all things disc golf. It was built out with an n-tier structure with full CRUD (Create, Read, Update, Delete) that include the following layers
 
-To clone the repository, run this command in your terminal:
-```
-git clone https://github.com/zdearmin/TheDiscAppMVC.git
-```
+ - Data
+ - Model
+ - Services 
+ - Presentation (Controllers, Views, and Styles)
+ 
+The application comes preset with five stock discs, players, teams, and collections. These can be expanded upon, edited, or deleted.
 
+This application is still a working progress and will continually be having new features added to it. Patience would be appreciated as we continue this project.
 
-With your server running, you can execute the following command to create the database and tables. If your current working directory is the same as the folder with the `.git` file, your command should look like below:
-```
+Developed by [Zach Dearmin](https://github.com/zdearmin)
 
-```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE -->
 ## Usage
+TheDiscAppMVC had been developed with ASP.Net Identity. All indexes can be viewed without registering an account. To edit, get details, or delete information, an account will be required.
 
+This web application has been deployed to Azure Cloud Service. The base website url should resemble 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- DATABASE SCHEMA -->
 ## Database Schema
-Here is an overview of the tables:
+Below is an overview of the data tables:
 - Collections
     - **Id** - `int` [PrimaryKey]
     - **Name** - `string` (max-char(50), min-char(2), not null)
@@ -85,34 +87,10 @@ Here is an overview of the tables:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- SCHEMAS -->
-## Schemas
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- COLLECTIONS -->
-### **Collections**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- DISCS -->
-### **Discs**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- PLAYERS -->
-### **Players**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- TEAMS -->
-### **Teams**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- RESOURCES -->
 ## Resources
 Below is a list of resources I would like to give credit to as each one played a role in the development of this MVC.
+- [PDGA](https://www.pdga.com/)
 - [ASP.NET](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0)
 - [Visual Studio](https://visualstudio.microsoft.com/vs/)
 - [GitHub](https://github.com/)
