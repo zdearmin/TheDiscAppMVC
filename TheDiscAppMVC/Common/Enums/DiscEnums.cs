@@ -129,52 +129,85 @@ namespace TheDiscAppMVC.Common.Enums
 
         public enum SpeedEnum
         {
+            [Display(Name = "0.5")] HalfSpeed,
             [Display(Name = "1")] OneSpeed,
+            [Display(Name = "1.5")] OneHalfSpeed,
             [Display(Name = "2")] TwoSpeed,
+            [Display(Name = "2.5")] TwoHalfSpeed,
             [Display(Name = "3")] ThreeSpeed,
+            [Display(Name = "3.5")] ThreeHalfSpeed,
             [Display(Name = "4")] FourSpeed,
+            [Display(Name = "4.5")] FourHalfSpeed,
             [Display(Name = "5")] FiveSpeed,
+            [Display(Name = "5.5")] FiveHalfSpeed,
             [Display(Name = "6")] SixSpeed,
+            [Display(Name = "6.5")] SixHalfSpeed,
             [Display(Name = "7")] SevenSpeed,
+            [Display(Name = "7.5")] SevenHalfSpeed,
             [Display(Name = "8")] EightSpeed,
+            [Display(Name = "8.5")] EightHalfSpeed,
             [Display(Name = "9")] NineSpeed,
+            [Display(Name = "9.5")] NineHalfSpeed,
             [Display(Name = "10")] TenSpeed,
+            [Display(Name = "10.5")] TenHalfSpeed,
             [Display(Name = "11")] ElevenSpeed,
+            [Display(Name = "11.5")] ElevenHalfSpeed,
             [Display(Name = "12")] TwelveSpeed,
+            [Display(Name = "12.5")] TweleveHalfSpeed,
             [Display(Name = "13")] ThirteenSpeed,
+            [Display(Name = "13.5")] ThirteenHalfSpeed,
             [Display(Name = "14")] FourteenSpeed,
+            [Display(Name = "14.5")] FourteenHalfSpeed,
             [Display(Name = "15")] FifteenSpeed
         }
 
         public enum GlideEnum
         {
+            [Display(Name = "0.5")] HalfGlide,
             [Display(Name = "1")] OneGlide,
+            [Display(Name = "1.5")] OneHalfGlide,
             [Display(Name = "2")] TwoGlide,
+            [Display(Name = "2.5")] TwoHalfGlide,
             [Display(Name = "3")] ThreeGlide,
+            [Display(Name = "3.5")] ThreeHalfGlide,
             [Display(Name = "4")] FourGlide,
+            [Display(Name = "4.5")] FourHalfGlide,
             [Display(Name = "5")] FiveGlide,
+            [Display(Name = "5.5")] FiveHalfGlide,
             [Display(Name = "6")] SixGlide,
+            [Display(Name = "6.5")] SixHalfGlide,
             [Display(Name = "7")] SevenGlide,
         }
 
         public enum TurnEnum
         {
             [Display(Name = "+1")] OneTurn,
+            [Display(Name = "+0.5")] HalfTurn,
             [Display(Name = "0")] ZeroTurn,
+            [Display(Name = "-0.5")] NegHalfTurn,
             [Display(Name = "-1")] NegOneTurn,
+            [Display(Name = "-1.5")] NegOneHalfTurn,
             [Display(Name = "-2")] NegTwoTurn,
+            [Display(Name = "-2.5")] NegTwoHalfTurn,
             [Display(Name = "-3")] NegThreeTurn,
+            [Display(Name = "-3.5")] NegThreeHalfTurn,
             [Display(Name = "-4")] NegFourTurn,
+            [Display(Name = "-4.5")] NegFourHalfTurn,
             [Display(Name = "-5")] NegFiveTurn,
         }
 
         public enum FadeEnum
         {
             [Display(Name = "0")] ZeroFade,
+            [Display(Name = "0.5")] HalfFade,
             [Display(Name = "1")] OneFade,
+            [Display(Name = "1.5")] OneHalfFade,
             [Display(Name = "2")] TwoFade,
+            [Display(Name = "2.5")] TwoHalfFade,
             [Display(Name = "3")] ThreeFade,
+            [Display(Name = "3.5")] ThreeHalfFade,
             [Display(Name = "4")] FourFade,
+            [Display(Name = "4.5")] FourHalfFade,
             [Display(Name = "5")] FiveFade,
         }
     }

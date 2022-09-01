@@ -1,18 +1,45 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.faq-indent {
+    text-indent: 2em;
+}
+
+.card {
+    width: 16rem;
+    height: 20rem;
+    display: inline-flex;
+    margin-bottom: 0.25rem;
+}
+
+.action-links {
+    text-decoration: none;
 }

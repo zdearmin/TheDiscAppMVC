@@ -53,7 +53,6 @@ namespace TheDiscAppMVC.Services.Team
                 NumOfPlayers = team.Players
                 .Where(p => p.TeamId == id)
                 .Count(),
-                PlayerId = player.Select(p => p.Id).ToList(),
                 PlayerName = player.Select(p => p.Name.ToString()).ToList(),
             };
         }
