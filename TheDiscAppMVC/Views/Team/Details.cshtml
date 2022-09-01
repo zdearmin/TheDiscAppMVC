@@ -4,11 +4,11 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h2>Team : @Model.Name</h2>
+
+<hr />
 
 <div>
-    <h4>Team</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
@@ -29,14 +29,15 @@
             @Html.DisplayFor(model => model.NumOfPlayers)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Players)
+            @Html.DisplayNameFor(model => model.PlayerName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Players)
+            @Html.DisplayFor(model => model.PlayerName)
         </dd>
     </dl>
 </div>
+
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { style = "text-decoration: none;"}) |
+    <a class="action-links" asp-action="Index">Back to List</a>
 </div>

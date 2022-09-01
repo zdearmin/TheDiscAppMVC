@@ -5,7 +5,7 @@ using TheDiscAppMVC.Models.Disc;
 using TheDiscAppMVC.Models.Player;
 
 namespace TheDiscAppMVC.Services.Collection
-{ 
+{
     public class CollectionService : ICollectionService
     {
         private readonly ApplicationDbContext _dbContext;
@@ -38,10 +38,17 @@ namespace TheDiscAppMVC.Services.Collection
 
         public async Task<CollectionDetail> GetCollectionById(int id)
         {
+
             var collection = await _dbContext.Collections
                 .Include(p => p.Players)
                 .Include(d => d.Discs)
                 .FirstOrDefaultAsync(c => c.Id == id);
+
+            var playerId = collection.PlayerId;
+            var player = await _dbContext.Players.FirstOrDefaultAsync(p => p.Id == playerId);
+
+            var discId = collection.DiscId;
+            var disc = await _dbContext.Discs.FirstOrDefaultAsync(d => d.Id == discId);
 
             if (collection is null)
             {
@@ -52,27 +59,23 @@ namespace TheDiscAppMVC.Services.Collection
             {
                 Id = collection.Id,
                 Name = collection.Name,
-                Players = collection.Players.Select(p => new PlayerListItem
-                {
-                    Name = p.Name
-                })
-                .ToList(),
-                Discs = collection.Discs.Select(d => new DiscListItem
-                {
-                    Name = d.Name
-                })
-                .ToList()
+                PlayerId = collection.PlayerId,
+                PlayerName = player.Name,
+                DiscId = collection.DiscId,
+                DiscName = disc.Name
             };
         }
 
         public async Task<IEnumerable<CollectionListItem>> GetAllCollections()
         {
-            var collections = await _dbContext.Collections.Select(collection => new CollectionListItem
-            {
-                Id = collection.Id,
-                Name = collection.Name
-            })
-                .ToListAsync();
+            var collections = await _dbContext.Collections
+                .Select(collection => new CollectionListItem
+                {
+                    Id = collection.Id,
+                    Name = collection.Name
+                })
+                    .ToListAsync();
+
             return collections;
         }
 

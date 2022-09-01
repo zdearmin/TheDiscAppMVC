@@ -4,12 +4,14 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1>Are you sure you want to delete this?</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+
+<h4>Team : @Model.Name</h4>
+
+<hr />
+
 <div>
-    <h4>Team</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
@@ -29,10 +31,16 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NumOfPlayers)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PlayerName)
+        </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a class="action-links" asp-action="Index">Back to List</a>
     </form>
 </div>

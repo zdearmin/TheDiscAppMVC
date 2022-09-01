@@ -4,10 +4,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h2>Collection : @Model.Name</h2>
 
-<h4>Collection</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -17,16 +17,27 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="PlayerId" class="control-label"></label>
-                @Html.DropDownListFor(c => c.DiscId, Model.PlayerOptions)
+                <br />
+                @Html.DropDownListFor(c => c.PlayerId, Model.PlayerOptions)
                 <span asp-validation-for="PlayerId" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="DiscId" class="control-label"></label>
+                <br />
                 @Html.DropDownListFor(c => c.DiscId, Model.DiscOptions)
                 <span asp-validation-for="DiscId" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -35,7 +46,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="action-links" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

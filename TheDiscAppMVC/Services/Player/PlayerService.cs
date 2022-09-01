@@ -16,10 +16,10 @@ namespace TheDiscAppMVC.Services.Player
 
         public async Task<bool> CreatePlayer(PlayerCreate model)
         {
-            if (model == null || isDuplicateNumber(model.PdgaNumber) == true)
+            if (model == null)
             {
                 return false;
-            }      
+            }
 
             _dbContext.Players.Add(new Data.Player
             {
@@ -42,10 +42,7 @@ namespace TheDiscAppMVC.Services.Player
         {
             var player = await _dbContext.Players
                 .Include(t => t.Team)
-                .Include(c => c.Collections)
-                .ThenInclude(d => d.Discs)
                 .FirstOrDefaultAsync(p => p.Id == id);
-                
 
             if (player is null)
             {
@@ -65,14 +62,14 @@ namespace TheDiscAppMVC.Services.Player
         public async Task<IEnumerable<PlayerListItem>> GetAllPlayers()
         {
             var player = await _dbContext.Players
-                .Include(t => t.Team)
                 .Select(player => new PlayerListItem
-            {
-                Id = player.Id,
-                Name = player.Name,
-                TeamName = player.Team.Name
-            })
+                {
+                    Id = player.Id,
+                    Name = player.Name,
+                    TeamName = player.Team.Name
+                })
                 .ToListAsync();
+
             return player;
         }
 
@@ -80,12 +77,12 @@ namespace TheDiscAppMVC.Services.Player
         {
             var player = await _dbContext.Players.FindAsync(model.Id);
 
-            if (player is null || isDuplicateNumber(model.PdgaNumber) == true)
+            if (player is null)
             {
                 return false;
             }
 
-            player.Name = model.Name;   
+            player.Name = model.Name;
             player.PdgaNumber = model.PdgaNumber;
             player.PdgaRating = model.PdgaRating;
             player.TeamId = model.TeamId;
@@ -115,11 +112,6 @@ namespace TheDiscAppMVC.Services.Player
             }
 
             return false;
-        }
-
-        private bool isDuplicateNumber(int number)
-        {
-            return _dbContext.Players.Any(n => n.PdgaNumber == number);
         }
     }
 }

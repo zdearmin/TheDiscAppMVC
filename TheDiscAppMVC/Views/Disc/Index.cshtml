@@ -6,78 +6,30 @@
 
 <h1>Disc Index</h1>
 
-<p>
-    <a asp-action="Create">Add a new disc</a>
+<hr />
+
+<p style="text-decoration: none">
+    <a class="action-links btn btn-primary btn-secondary" asp-action="Create">Add a new disc</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stability)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiscType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Speed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Glide)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Turn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiscType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Speed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Glide)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turn)
-            </td>
-            <td>
+
+@foreach (var item in Model)
+{
+    <div class="card">
+        <img src="./Images/image-not-found.png" class="card-img-top rounded mx-auto d-block" alt="image-not-found">
+        <div class="card-body">
+            <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Name)</h5>   
+            <p class="text-muted text-center">@Html.DisplayFor(modelItem => item.Brand)</p>
+            <p class="card-text text-center">
+                @Html.DisplayFor(modelItem => item.Speed) / 
+                @Html.DisplayFor(modelItem => item.Glide) / 
+                @Html.DisplayFor(modelItem => item.Turn) / 
                 @Html.DisplayFor(modelItem => item.Fade)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+            </p>
+            <p class="text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { style = "text-decoration: none;"}) | 
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { style = "text-decoration: none;"}) | 
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { style = "text-decoration: none;"})
+            </p>
+        </div>
+    </div>
 }
-    </tbody>
-</table>

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h2>Player : @Model.Name</h2>
 
-<h4>Player</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -17,21 +17,34 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="PdgaNumber" class="control-label"></label>
                 <input asp-for="PdgaNumber" class="form-control" />
                 <span asp-validation-for="PdgaNumber" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="PdgaRating" class="control-label"></label>
                 <input asp-for="PdgaRating" class="form-control" />
                 <span asp-validation-for="PdgaRating" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <label asp-for="TeamId" class="control-label"></label>
+                <br />
                 @Html.DropDownListFor(p => p.TeamId, Model.TeamOptions)
                 <span asp-validation-for="TeamId" class="text-danger"></span>
             </div>
+
+            <br />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -40,7 +53,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="action-links" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

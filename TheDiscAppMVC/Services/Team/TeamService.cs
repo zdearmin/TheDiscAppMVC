@@ -39,6 +39,8 @@ namespace TheDiscAppMVC.Services.Team
                 .Include(p => p.Players)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
+            var player = await _dbContext.Players.Where(p => p.TeamId == id).ToListAsync();
+
             if (team is null)
             {
                 return null;
@@ -49,24 +51,24 @@ namespace TheDiscAppMVC.Services.Team
                 Id = team.Id,
                 Name = team.Name,
                 NumOfPlayers = team.Players
-                .Where(p => p.TeamId == id).Count(),
-                Players = team.Players
-                .Select(p => new PlayerListItem
-                {
-                    Id = p.Id
-                })
-                .ToList()
+                .Where(p => p.TeamId == id)
+                .Count(),
+                PlayerName = player.Select(p => p.Name.ToString()).ToList(),
             };
         }
 
         public async Task<IEnumerable<TeamListItem>> GetAllTeams()
         {
-            var teams = await _dbContext.Teams.Select(team => new TeamListItem
-            {
-                Id = team.Id,
-                Name = team.Name,
-                NumOfPlayers = team.Players.Count()
-            }).ToListAsync();
+            var teams = await _dbContext.Teams
+                .Select(team => new TeamListItem
+                {
+                    Id = team.Id,
+                    Name = team.Name,
+                    NumOfPlayers = team.Players
+                    .Where(p => p.TeamId == team.Id)
+                    .Count()
+                })
+                    .ToListAsync();
 
             return teams;
         }

@@ -11,13 +11,13 @@ namespace TheDiscAppMVC.Models.Player
         [Display(Name = "Name (Required)")]
         public string Name { get; set; }
 
-        [Display(Name = "PDGA Number")]
-        public int PdgaNumber { get; set; }
+        [Display(Name = "PDGA Number (Required)")]
+        public int? PdgaNumber { get; set; }
 
-        [Display(Name = "PDGA Rating")]
-        public int PdgaRating { get; set; }
+        [Display(Name = "PDGA Rating (Required)")]
+        public int? PdgaRating { get; set; }
 
-        [Display(Name = "Team")]
+        [Display(Name = "Team (Required)")]
         public int TeamId { get; set; }
 
         public IEnumerable<SelectListItem> TeamOptions { get; set; } = new List<SelectListItem>();

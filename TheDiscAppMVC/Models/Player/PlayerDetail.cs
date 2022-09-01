@@ -10,10 +10,10 @@ namespace TheDiscAppMVC.Models.Player
         public string Name { get; set; }
 
         [Display(Name = "PDGA Number")]
-        public int PdgaNumber { get; set; }
+        public int? PdgaNumber { get; set; }
 
         [Display(Name = "PDGA Rating")]
-        public int PdgaRating { get; set; }
+        public int? PdgaRating { get; set; }
         public int TeamId { get; set; }
 
         [Display(Name = "Team")]
